@@ -6,22 +6,9 @@ import {
   Search,
   BookOpen,
   Terminal,
-  Shield,
-  Sparkles,
   ArrowRight,
   CheckCircle2,
-  Cpu,
-  Wifi,
-  Laptop,
-  Apple,
-  Smartphone,
-  Globe,
-  AppWindow,
-  Zap,
-  TrendingUp,
-  Layers,
   Clock,
-  ThumbsUp,
 } from "lucide-react";
 import { CATEGORIES, TOPICS_DATA } from "@/lib/topics-data";
 import { CategoryIcon } from "@/components/CategoryIcon";
@@ -45,62 +32,55 @@ export default function HomePage() {
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-stone-900 via-stone-900 to-stone-950 text-white pt-20 pb-28 border-b border-stone-800">
-        <div className="absolute inset-0 bg-[radial-gradient(#0d9488_1px,transparent_1px)] [background-size:24px_24px] opacity-15" />
+      <section className="bg-stone-900 text-white pt-20 pb-24 border-b border-stone-800">
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/80 border border-teal-800 text-teal-400 text-xs font-semibold shadow-inner">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>117+ Production-Grade IT Troubleshooting Guides</span>
-          </div>
+          <span className="inline-block text-xs font-semibold uppercase tracking-widest text-teal-400 border border-teal-800 bg-teal-950/60 px-3 py-1 rounded">
+            IT Troubleshooting Reference
+          </span>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-            Instant Remediation for <br />
-            <span className="bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent">
-              Everyday IT & Infrastructure
-            </span> Issues
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
+            Fix IT problems faster with structured, step-by-step guides
           </h1>
 
           <p className="text-sm sm:text-base text-stone-300 max-w-2xl mx-auto leading-relaxed">
-            Engineered for SysAdmins, Help Desk Techs, and Power Users. Search across 10 technical domains, copy multi-OS terminal commands, and follow step-by-step diagnostic workflows.
+            117 guides across 10 technical domains. Every guide includes multi-OS terminal commands, numbered checklists, and verified fixes for Windows, macOS, Linux, iOS, and Android.
           </p>
 
-          {/* Instant Search Bar Trigger */}
+          {/* Search Bar */}
           <div className="max-w-2xl mx-auto pt-4">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="w-full flex items-center justify-between p-3.5 sm:p-4 bg-stone-800/90 hover:bg-stone-800 border border-stone-700 rounded-2xl text-stone-300 text-sm shadow-2xl backdrop-blur-sm group transition-all"
+              className="w-full flex items-center justify-between p-4 bg-stone-800 hover:bg-stone-750 border border-stone-700 rounded text-stone-300 text-sm shadow-lg group transition-colors"
             >
               <div className="flex items-center gap-3">
-                <Search className="w-5 h-5 text-teal-400 group-hover:scale-110 transition-transform" />
+                <Search className="w-5 h-5 text-teal-400" />
                 <span className="text-stone-400 group-hover:text-stone-200">
-                  Search guides by error code, command, or symptom...
+                  Search by error code, command, or symptom...
                 </span>
               </div>
-              <div className="flex items-center gap-1">
-                <kbd className="px-2.5 py-1 font-mono text-xs bg-stone-900 border border-stone-700 rounded-lg text-stone-400">
-                  Ctrl + K
-                </kbd>
-              </div>
+              <kbd className="px-2.5 py-1 font-mono text-xs bg-stone-900 border border-stone-700 rounded text-stone-400">
+                Ctrl + K
+              </kbd>
             </button>
           </div>
 
-          {/* Quick Stats Grid */}
+          {/* Real Stats */}
           <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto text-left">
-            <div className="p-3.5 rounded-xl bg-stone-800/50 border border-stone-800/80">
+            <div className="p-3.5 rounded bg-stone-800/50 border border-stone-800">
               <span className="text-xl font-bold text-teal-400 block font-mono">117</span>
-              <span className="text-xs text-stone-400">Curated IT Guides</span>
+              <span className="text-xs text-stone-400">Guides published</span>
             </div>
-            <div className="p-3.5 rounded-xl bg-stone-800/50 border border-stone-800/80">
-              <span className="text-xl font-bold text-emerald-400 block font-mono">10</span>
-              <span className="text-xs text-stone-400">Core Tech Domains</span>
+            <div className="p-3.5 rounded bg-stone-800/50 border border-stone-800">
+              <span className="text-xl font-bold text-teal-400 block font-mono">10</span>
+              <span className="text-xs text-stone-400">Technical domains</span>
             </div>
-            <div className="p-3.5 rounded-xl bg-stone-800/50 border border-stone-800/80">
-              <span className="text-xl font-bold text-cyan-400 block font-mono">&lt;100ms</span>
-              <span className="text-xs text-stone-400">Instant Search Latency</span>
+            <div className="p-3.5 rounded bg-stone-800/50 border border-stone-800">
+              <span className="text-xl font-bold text-teal-400 block font-mono">5</span>
+              <span className="text-xs text-stone-400">Operating systems</span>
             </div>
-            <div className="p-3.5 rounded-xl bg-stone-800/50 border border-stone-800/80">
-              <span className="text-xl font-bold text-amber-400 block font-mono">100%</span>
-              <span className="text-xs text-stone-400">Step-by-Step Checklists</span>
+            <div className="p-3.5 rounded bg-stone-800/50 border border-stone-800">
+              <span className="text-xl font-bold text-teal-400 block font-mono">3</span>
+              <span className="text-xs text-stone-400">Shell environments</span>
             </div>
           </div>
         </div>
@@ -165,14 +145,14 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Category Filter Pills */}
+          {/* Category Filter Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
             <button
               onClick={() => setSelectedTab("all")}
-              className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
+              className={`px-3 py-1 rounded text-xs font-semibold whitespace-nowrap transition-colors ${
                 selectedTab === "all"
                   ? "bg-teal-600 text-white"
-                  : "bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300"
+                  : "bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 dark:hover:bg-stone-700"
               }`}
             >
               All Domains
@@ -181,10 +161,10 @@ export default function HomePage() {
               <button
                 key={cat.slug}
                 onClick={() => setSelectedTab(cat.slug)}
-                className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
+                className={`px-3 py-1 rounded text-xs font-medium whitespace-nowrap transition-colors ${
                   selectedTab === cat.slug
                     ? "bg-teal-600 text-white font-semibold"
-                    : "bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300"
+                    : "bg-stone-200 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-300 dark:hover:bg-stone-700"
                 }`}
               >
                 {cat.name}
@@ -199,7 +179,7 @@ export default function HomePage() {
             return (
               <div
                 key={topic.id}
-                className="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:shadow-xl hover:border-teal-500/40 transition-all flex flex-col justify-between"
+                className="p-6 rounded bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:shadow-lg hover:border-teal-500/40 transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
@@ -227,8 +207,7 @@ export default function HomePage() {
                     {topic.summary}
                   </p>
 
-                  {/* Quick diagnostic tips preview */}
-                  <div className="mt-4 space-y-1.5 bg-stone-50 dark:bg-stone-950/60 p-3 rounded-xl border border-stone-100 dark:border-stone-800/80">
+                  <div className="mt-4 space-y-1.5 bg-stone-50 dark:bg-stone-950/60 p-3 rounded border border-stone-100 dark:border-stone-800/80">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
                       Quick Steps Preview
                     </span>
@@ -258,49 +237,41 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Terminal Quick Cheat Sheet Banner */}
+      {/* Terminal Commands Banner */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 rounded-3xl bg-gradient-to-tr from-stone-950 via-stone-900 to-teal-950 text-white border border-stone-800 shadow-2xl relative overflow-hidden">
+        <div className="p-8 rounded bg-stone-950 text-white border border-stone-800">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-900/60 text-teal-300 text-xs font-semibold border border-teal-700">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold text-teal-400 border border-teal-800 bg-teal-950/60 px-3 py-1 rounded uppercase tracking-wider">
                 <Terminal className="w-3.5 h-3.5" />
-                <span>Multi-OS Terminal Snippets</span>
-              </div>
+                Multi-OS Terminal Commands
+              </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-                Single-Click Executable Commands for Any Shell
+                Commands for PowerShell, CMD, Bash, and Zsh
               </h2>
               <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
-                Whether you operate in Windows PowerShell, Command Prompt, or Unix Bash/Zsh on macOS and Linux, every guide includes syntax-highlighted commands ready to copy and paste.
+                Every guide includes syntax-highlighted, copy-ready commands for Windows PowerShell, Command Prompt, macOS Terminal, and Linux Bash. No searching. No adapting.
               </p>
-              <div className="flex items-center gap-3 pt-2">
-                <Link
-                  href="/docs/networking"
-                  className="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-colors shadow-md"
-                >
-                  Explore Networking Commands
-                </Link>
-                <Link
-                  href="/admin"
-                  className="px-4 py-2 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-semibold transition-colors border border-stone-700"
-                >
-                  Admin CMS Editor
-                </Link>
-              </div>
+              <Link
+                href="/docs/networking"
+                className="inline-block px-4 py-2 rounded bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition-colors"
+              >
+                Browse Networking Commands
+              </Link>
             </div>
 
-            <div className="p-4 rounded-2xl bg-black/80 border border-stone-800 font-mono text-xs text-teal-300 leading-relaxed shadow-inner">
+            <div className="p-4 rounded bg-black border border-stone-800 font-mono text-xs text-teal-300 leading-relaxed">
               <div className="flex items-center justify-between pb-3 mb-3 border-b border-stone-800 text-stone-400">
                 <span className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
-                  PowerShell Diagnostic Snippet
+                  PowerShell
                 </span>
                 <span className="text-[10px]">Windows 11 / Server</span>
               </div>
-              <p className="text-stone-400"># Flush DNS cache and test gateway connectivity</p>
+              <p className="text-stone-400"># Flush DNS cache and test connectivity</p>
               <p className="text-teal-400 font-semibold">Clear-DnsClientCache</p>
               <p className="text-teal-400 font-semibold">Test-NetConnection -ComputerName 8.8.8.8 -Port 53</p>
-              <p className="text-stone-400 mt-2"># Review top CPU process culprits</p>
+              <p className="text-stone-400 mt-2"># Show top CPU processes</p>
               <p className="text-teal-400 font-semibold">Get-Process | Sort-Object CPU -Descending | Select -First 5</p>
             </div>
           </div>

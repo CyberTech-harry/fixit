@@ -5,8 +5,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "CyberTech Portal | Full-Stack IT Knowledge Base & Diagnostics",
-  description: "Enterprise IT documentation and troubleshooting portal spanning 10 core domains, 117+ interactive guides, terminal commands, and telemetry diagnostics.",
+  title: "CyberTech Portal | IT Troubleshooting Guides & Diagnostics",
+  description: "117 IT troubleshooting guides across 10 technical domains. Step-by-step fixes for Windows, macOS, Linux, networking, security, and hardware — with copy-ready terminal commands.",
   keywords: [
     "IT Troubleshooting",
     "Windows Fixes",
@@ -18,10 +18,15 @@ export const metadata: Metadata = {
     "SysAdmin Scripts"
   ],
   authors: [{ name: "CyberTech IT Engineering Team" }],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+  },
   openGraph: {
-    title: "CyberTech Portal | Full-Stack IT Knowledge Base",
-    description: "Instant sub-100ms access to 117+ production-grade IT troubleshooting workflows, checklists, and commands.",
+    title: "CyberTech Portal | IT Troubleshooting Guides",
+    description: "117 step-by-step IT guides with terminal commands for Windows, macOS, Linux, networking, security, and hardware.",
     type: "website",
+    url: "https://fixit.cybertechcomps.com",
   },
 };
 
