@@ -110,10 +110,10 @@ export default function HomePage() {
             <Link
               key={cat.slug}
               href={`/docs/${cat.slug}`}
-              className="group p-5 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-teal-500/50 hover:shadow-lg transition-all flex flex-col justify-between"
+              className="group p-5 rounded-[10px] bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:border-teal-500/50 hover:shadow-lg transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 rounded-[10px] bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-400 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                   <CategoryIcon name={cat.icon} className="w-5 h-5" />
                 </div>
                 <h3 className="font-bold text-sm text-stone-900 dark:text-stone-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">

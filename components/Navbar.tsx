@@ -67,19 +67,19 @@ export function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-stone-200 dark:border-stone-800 bg-white/90 dark:bg-stone-900/90 backdrop-blur-md transition-colors">
+      <header className="sticky top-0 z-40 w-full bg-[#4a90e2] text-white border-b-2 border-[#ddd] shadow-[0_2px_5px_rgba(0,0,0,0.2)] transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           {/* Brand Logo */}
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-[10px] bg-teal-600 flex items-center justify-center text-white shadow-sm transition-transform">
+              <div className="w-10 h-10 rounded-[10px] bg-white/20 border border-white/30 flex items-center justify-center text-white shadow-sm transition-transform">
                 <Terminal className="w-5 h-5" />
               </div>
               <div className="flex flex-col">
-                <span className="font-extrabold text-lg text-stone-900 dark:text-white tracking-tight leading-none">
-                  Cyber<span className="text-teal-600 dark:text-teal-400">Tech</span> Portal
+                <span className="font-extrabold text-lg text-white tracking-tight leading-none">
+                  CyberTech Portal
                 </span>
-                <span className="text-[10px] text-stone-500 dark:text-stone-400 font-medium tracking-wide">
+                <span className="text-[10px] text-blue-100 font-medium tracking-wide">
                   Enterprise IT Knowledge Base
                 </span>
               </div>
@@ -89,10 +89,10 @@ export function Navbar() {
             <nav className="hidden md:flex items-center gap-1 text-sm font-medium">
               <Link
                 href="/docs"
-                className={`px-3 py-2 rounded-lg transition-colors ${
+                className={`px-3 py-2 rounded-[10px] transition-colors ${
                   pathname.startsWith("/docs")
-                    ? "bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-400 font-semibold"
-                    : "text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800"
+                    ? "bg-[#357abd] text-white font-semibold shadow-inner"
+                    : "text-white hover:bg-[#357abd]"
                 }`}
               >
                 Knowledge Base
@@ -103,22 +103,22 @@ export function Navbar() {
                 <button
                   onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
                   onBlur={() => setTimeout(() => setIsCategoryDropdownOpen(false), 200)}
-                  className="px-3 py-2 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors flex items-center gap-1"
+                  className="px-3 py-2 rounded-[10px] text-white hover:bg-[#357abd] transition-colors flex items-center gap-1"
                 >
                   Categories <ChevronDown className="w-3.5 h-3.5" />
                 </button>
                 {isCategoryDropdownOpen && (
-                  <div className="absolute left-0 top-full mt-1 w-64 bg-white dark:bg-stone-900 rounded-xl shadow-xl border border-stone-200 dark:border-stone-800 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="absolute left-0 top-full mt-1 w-64 bg-white rounded-[10px] shadow-xl border border-[#ddd] p-2 z-50 text-[#333]">
                     {CATEGORIES.map((cat) => (
                       <Link
                         key={cat.slug}
                         href={`/docs/${cat.slug}`}
                         onClick={() => setIsCategoryDropdownOpen(false)}
-                        className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium text-stone-700 dark:text-stone-300 hover:bg-teal-50 dark:hover:bg-teal-950/40 hover:text-teal-700 dark:hover:text-teal-400 transition-colors"
+                        className="flex items-center gap-2.5 px-3 py-2 rounded-[6px] text-xs font-medium text-[#333] hover:bg-[#f0f6fc] hover:text-[#4a90e2] transition-colors"
                       >
-                        <CategoryIcon name={cat.icon} className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                        <CategoryIcon name={cat.icon} className="w-4 h-4 text-[#4a90e2]" />
                         <span>{cat.name}</span>
-                        <span className="ml-auto text-[10px] text-stone-400 font-mono">
+                        <span className="ml-auto text-[10px] text-[#555] font-mono">
                           {cat.topicCount}
                         </span>
                       </Link>
@@ -129,22 +129,20 @@ export function Navbar() {
 
               <Link
                 href="/bookmarks"
-                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+                className={`px-3 py-2 rounded-[10px] transition-colors flex items-center gap-1.5 ${
                   pathname === "/bookmarks"
-                    ? "bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-400 font-semibold"
-                    : "text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800"
+                    ? "bg-[#357abd] text-white font-semibold shadow-inner"
+                    : "text-white hover:bg-[#357abd]"
                 }`}
               >
                 <Bookmark className="w-4 h-4" />
                 <span>Vault</span>
                 {bookmarkCount > 0 && (
-                  <span className="px-1.5 py-0.2 bg-teal-600 text-white rounded-full text-[10px] font-bold">
+                  <span className="px-1.5 py-0.2 bg-white text-[#4a90e2] rounded-full text-[10px] font-bold">
                     {bookmarkCount}
                   </span>
                 )}
               </Link>
-
-
             </nav>
           </div>
 
@@ -152,13 +150,13 @@ export function Navbar() {
           <div className="flex-1 max-w-md hidden sm:block">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="w-full flex items-center justify-between px-3.5 py-2 bg-stone-100 dark:bg-stone-800/80 hover:bg-stone-200/80 dark:hover:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-xl text-stone-400 dark:text-stone-400 text-xs transition-colors shadow-inner"
+              className="w-full flex items-center justify-between px-3.5 py-2 bg-white hover:bg-white/95 border border-[#ddd] rounded-[10px] text-[#555] text-xs transition-colors shadow-sm"
             >
               <div className="flex items-center gap-2">
-                <Search className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
-                <span>Search 117+ guides, solutions & commands...</span>
+                <Search className="w-3.5 h-3.5 text-[#4a90e2]" />
+                <span className="text-[#555]">Search 117+ guides, solutions & commands...</span>
               </div>
-              <kbd className="px-2 py-0.5 font-mono text-[10px] bg-white dark:bg-stone-900 border border-stone-300 dark:border-stone-700 rounded shadow-sm">
+              <kbd className="px-2 py-0.5 font-mono text-[10px] bg-[#f0f0f5] border border-[#ddd] rounded text-[#555]">
                 Ctrl K
               </kbd>
             </button>
@@ -169,7 +167,7 @@ export function Navbar() {
             {/* Mobile Search Button */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="sm:hidden p-2 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg"
+              className="sm:hidden p-2 text-white hover:bg-[#357abd] rounded-[10px]"
               title="Search"
             >
               <Search className="w-5 h-5" />
@@ -178,16 +176,16 @@ export function Navbar() {
             {/* Dark/Light mode toggle */}
             <button
               onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-xl text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors"
-              title={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} mode`}
+              className="p-2 rounded-[10px] text-white hover:bg-[#357abd] transition-colors"
+              title={`Switch mode`}
             >
-              {resolvedTheme === "dark" ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-stone-700" />}
+              {resolvedTheme === "dark" ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-white" />}
             </button>
 
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-lg"
+              className="md:hidden p-2 text-white hover:bg-[#357abd] rounded-[10px]"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>

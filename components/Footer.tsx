@@ -5,47 +5,47 @@ import { CATEGORIES } from "@/lib/topics-data";
 
 export function Footer() {
   return (
-    <footer className="border-t border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/60 mt-auto transition-colors">
+    <footer className="w-full bg-[#4a90e2] text-white border-t-2 border-[#ddd] mt-auto transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand Col */}
           <div className="md:col-span-1 space-y-3">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded bg-teal-600 flex items-center justify-center text-white">
+              <div className="w-8 h-8 rounded-[10px] bg-white/20 border border-white/30 flex items-center justify-center text-white">
                 <Terminal className="w-4 h-4" />
               </div>
-              <span className="font-bold text-base text-stone-900 dark:text-white">
+              <span className="font-bold text-base text-white">
                 CyberTech Portal
               </span>
             </div>
-            <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+            <p className="text-xs text-blue-100 leading-relaxed">
               IT documentation and troubleshooting reference across 10 technical domains. 117 guides covering Windows, macOS, Linux, networking, security, hardware, and more.
             </p>
           </div>
 
           {/* Operating Systems */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
               Operating Systems
             </h4>
-            <ul className="space-y-2 text-xs text-stone-600 dark:text-stone-400">
+            <ul className="space-y-2 text-xs text-blue-100">
               <li>
-                <Link href="/docs/windows-os" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/docs/windows-os" className="hover:text-white hover:underline transition-colors">
                   Windows OS (15 Guides)
                 </Link>
               </li>
               <li>
-                <Link href="/docs/macos" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/docs/macos" className="hover:text-white hover:underline transition-colors">
                   macOS (10 Guides)
                 </Link>
               </li>
               <li>
-                <Link href="/docs/mobile" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/docs/mobile" className="hover:text-white hover:underline transition-colors">
                   Mobile — iOS &amp; Android (15 Guides)
                 </Link>
               </li>
               <li>
-                <Link href="/docs/web-browsers" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/docs/web-browsers" className="hover:text-white hover:underline transition-colors">
                   Web Browsers (15 Guides)
                 </Link>
               </li>
@@ -54,27 +54,27 @@ export function Footer() {
 
           {/* Infrastructure & Hardware */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
               Infrastructure &amp; Tech
             </h4>
-            <ul className="space-y-2 text-xs text-stone-600 dark:text-stone-400">
+            <ul className="space-y-2 text-xs text-blue-100">
               <li>
-                <Link href="/docs/networking" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/docs/networking" className="hover:text-white hover:underline transition-colors">
                   Networking &amp; Internet (15 Guides)
                 </Link>
               </li>
               <li>
-                <Link href="/docs/security" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/docs/security" className="hover:text-white hover:underline transition-colors">
                   Security &amp; Privacy (10 Guides)
                 </Link>
               </li>
               <li>
-                <Link href="/docs/hardware" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/docs/hardware" className="hover:text-white hover:underline transition-colors">
                   Hardware Diagnostics (10 Guides)
                 </Link>
               </li>
               <li>
-                <Link href="/docs/emerging-tech" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/docs/emerging-tech" className="hover:text-white hover:underline transition-colors">
                   Emerging Tech &amp; AI (7 Guides)
                 </Link>
               </li>
@@ -83,12 +83,12 @@ export function Footer() {
 
           {/* Portal Utilities */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-white mb-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
               Portal
             </h4>
-            <ul className="space-y-2 text-xs text-stone-600 dark:text-stone-400">
+            <ul className="space-y-2 text-xs text-blue-100">
               <li>
-                <Link href="/bookmarks" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/bookmarks" className="hover:text-white hover:underline transition-colors">
                   Bookmarks
                 </Link>
               </li>
@@ -97,18 +97,18 @@ export function Footer() {
                   href="https://youtu.be/p4kQbt0QUkY"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors inline-flex items-center gap-1"
+                  className="hover:text-white hover:underline transition-colors inline-flex items-center gap-1"
                 >
                   YouTube Channel <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/privacy" className="hover:text-white hover:underline transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                <Link href="/terms" className="hover:text-white hover:underline transition-colors">
                   Terms of Use
                 </Link>
               </li>
@@ -116,12 +116,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-6 border-t border-stone-200 dark:border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 dark:text-stone-400">
+        <div className="pt-6 border-t border-blue-400/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-blue-100">
           <p>&copy; {new Date().getFullYear()} CyberTech IT Knowledge Base. All rights reserved.</p>
           {/* Hidden admin access */}
           <Link
             href="/admin"
-            className="text-stone-300 dark:text-stone-700 hover:text-stone-400 dark:hover:text-stone-500 transition-colors select-none"
+            className="text-blue-300 hover:text-white transition-colors select-none"
             title=""
             aria-label="Portal management"
           >

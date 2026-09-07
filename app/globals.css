@@ -66,9 +66,92 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  background-color: var(--background-color-body) !important;
+  color: var(--text-color-dark) !important;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header Styles from User Theme */
+header {
+  background-color: var(--primary-color) !important;
+  color: var(--text-color-light) !important;
+  border-bottom: 2px solid var(--border-color) !important;
+  box-shadow: 0 2px 5px var(--box-shadow-color) !important;
+}
+
+header nav a {
+  color: var(--text-color-light) !important;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+header nav a:hover {
+  color: var(--text-color-light) !important;
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+/* Footer Styles from User Theme */
+footer {
+  background-color: var(--primary-color) !important;
+  color: var(--text-color-light) !important;
+  border-top: 2px solid var(--border-color) !important;
+}
+
+footer h3, footer h4, footer span.font-bold {
+  color: var(--text-color-light) !important;
+}
+
+footer p {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffffff !important;
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Primary Color Utility Overrides */
+.bg-teal-600, .bg-teal-500 {
+  background-color: var(--primary-color) !important;
+}
+
+.hover\:bg-teal-700:hover, .hover\:bg-teal-600:hover {
+  background-color: var(--primary-color-darker) !important;
+}
+
+.text-teal-600, .text-teal-500 {
+  color: var(--primary-color) !important;
+}
+
+.text-teal-400 {
+  color: #6ba3f5 !important;
+}
+
+.border-teal-500, .border-teal-600 {
+  border-color: var(--primary-color) !important;
+}
+
+.border-teal-800 {
+  border-color: var(--primary-color-darker) !important;
+}
+
+.bg-teal-50 {
+  background-color: #f0f6fc !important;
+}
+
+.bg-teal-950, .bg-teal-950\/80, .bg-teal-950\/60 {
+  background-color: #122842 !important;
 }
 
 /* Custom modern scrollbar */
