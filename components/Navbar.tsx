@@ -14,7 +14,6 @@ import {
   Layers,
   Menu,
   X,
-  Sparkles,
   ExternalLink,
   ChevronDown,
 } from "lucide-react";
@@ -73,7 +72,7 @@ export function Navbar() {
           {/* Brand Logo */}
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-emerald-400 flex items-center justify-center text-white shadow-md shadow-teal-500/20 group-hover:scale-105 transition-transform">
+              <div className="w-10 h-10 rounded-[10px] bg-teal-600 flex items-center justify-center text-white shadow-sm transition-transform">
                 <Terminal className="w-5 h-5" />
               </div>
               <div className="flex flex-col">

@@ -61,13 +61,13 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         {/* Main Content Area */}
         <div className="flex-1 space-y-8 min-w-0">
           {/* Category Header Card */}
-          <div className="p-8 rounded-3xl bg-gradient-to-tr from-stone-900 via-stone-850 to-stone-900 text-white border border-stone-800 shadow-xl relative overflow-hidden">
+          <div className="p-8 rounded-[10px] bg-stone-900 text-white border border-stone-800 shadow-sm relative overflow-hidden">
             <div className="relative z-10 flex items-start gap-5">
-              <div className="w-14 h-14 rounded-2xl bg-teal-600/20 border border-teal-500/30 text-teal-400 flex items-center justify-center shrink-0">
+              <div className="w-14 h-14 rounded-[10px] bg-teal-600/20 border border-teal-500/30 text-teal-400 flex items-center justify-center shrink-0">
                 <CategoryIcon name={category.icon} className="w-7 h-7" />
               </div>
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-teal-950/80 text-teal-400 text-xs font-semibold border border-teal-800">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-teal-400 text-xs font-semibold border border-teal-800 bg-teal-950/80">
                   Domain Guide
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
@@ -79,7 +79,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 <div className="pt-2 flex items-center gap-4 text-xs text-stone-400 font-mono">
                   <span>{topics.length} Total Guides</span>
                   <span>•</span>
-                  <span>100% Verified Resolutions</span>
+                  <span>Step-by-step diagnostic workflows</span>
                 </div>
               </div>
             </div>
