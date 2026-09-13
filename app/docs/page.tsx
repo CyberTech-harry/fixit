@@ -5,12 +5,9 @@ import Link from "next/link";
 import {
   Search,
   BookOpen,
-  Filter,
   ArrowRight,
   Clock,
-  Tag,
-  CheckCircle,
-  Laptop,
+  RotateCcw,
 } from "lucide-react";
 import { CATEGORIES, TOPICS_DATA } from "@/lib/topics-data";
 import { CategoryIcon } from "@/components/CategoryIcon";
@@ -41,41 +38,41 @@ export default function DocsIndexPage() {
   }, [searchTerm, selectedCategory, selectedDifficulty]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <div className="portal-container py-10 space-y-8 pb-20">
       {/* Header */}
-      <div className="space-y-3">
-        <span className="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">
+      <div className="space-y-2 border-b border-[#dddddd] dark:border-stone-800 pb-5">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#4a90e2]">
           Knowledge Base Directory
         </span>
-        <h1 className="text-3xl font-extrabold text-stone-900 dark:text-white tracking-tight">
-          All IT Troubleshooting Guides & Solutions
+        <h1 className="text-3xl font-extrabold text-[#333333] dark:text-white tracking-tight">
+          All IT Troubleshooting Guides &amp; Solutions
         </h1>
-        <p className="text-sm text-stone-500 dark:text-stone-400 max-w-3xl leading-relaxed">
-          Browse all {TOPICS_DATA.length} operational technical guides across 10 categories. Filter by domain, difficulty rating, or search for exact keywords and symptoms.
+        <p className="text-sm text-[#555555] dark:text-stone-300 max-w-3xl leading-relaxed">
+          Browse all {TOPICS_DATA.length} operational technical guides across 10 categories. Filter by domain, difficulty rating, or search for exact keywords, error codes, and symptoms.
         </p>
       </div>
 
       {/* Search and Filters Bar */}
-      <div className="p-4 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 shadow-sm space-y-4">
+      <div className="portal-card p-5 space-y-4">
         <div className="relative">
-          <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-stone-400" />
+          <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-[#555555] dark:text-stone-400" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Filter guides by title, keyword, command, or tag..."
-            className="w-full pl-10 pr-4 py-2.5 bg-stone-50 dark:bg-stone-800/80 border border-stone-200 dark:border-stone-700 rounded-xl text-sm text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
+            placeholder="Filter guides by title, error code, command, or tag..."
+            className="portal-input pl-10"
           />
         </div>
 
-        {/* Categories Pills */}
+        {/* Categories Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs">
           <button
             onClick={() => setSelectedCategory("all")}
-            className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors ${
+            className={`px-3 py-1.5 rounded-[10px] whitespace-nowrap transition-colors ${
               selectedCategory === "all"
-                ? "bg-teal-600 text-white font-semibold"
-                : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200"
+                ? "bg-[#4a90e2] text-white font-semibold shadow-sm"
+                : "bg-white dark:bg-stone-800 border border-[#dddddd] dark:border-stone-700 text-[#555555] dark:text-stone-300 hover:bg-[#f0f0f5]"
             }`}
           >
             All Categories ({TOPICS_DATA.length})
@@ -84,30 +81,30 @@ export default function DocsIndexPage() {
             <button
               key={cat.slug}
               onClick={() => setSelectedCategory(cat.slug)}
-              className={`px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors flex items-center gap-1.5 ${
+              className={`px-3 py-1.5 rounded-[10px] whitespace-nowrap transition-colors flex items-center gap-1.5 ${
                 selectedCategory === cat.slug
-                  ? "bg-teal-600 text-white font-semibold"
-                  : "bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200"
+                  ? "bg-[#4a90e2] text-white font-semibold shadow-sm"
+                  : "bg-white dark:bg-stone-800 border border-[#dddddd] dark:border-stone-700 text-[#555555] dark:text-stone-300 hover:bg-[#f0f0f5]"
               }`}
             >
-              <CategoryIcon name={cat.icon} className="w-3.5 h-3.5" />
+              <CategoryIcon name={cat.icon} className="w-3.5 h-3.5 text-current" />
               <span>{cat.name}</span>
             </button>
           ))}
         </div>
 
-        {/* Difficulty Selector */}
-        <div className="flex items-center justify-between pt-2 border-t border-stone-100 dark:border-stone-800 text-xs text-stone-500">
+        {/* Difficulty Selector & Count */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-3 border-t border-[#dddddd] dark:border-stone-800 text-xs text-[#555555] dark:text-stone-400 gap-2">
           <div className="flex items-center gap-2">
             <span className="font-medium">Difficulty Level:</span>
             {["all", "BEGINNER", "INTERMEDIATE", "ADVANCED"].map((diff) => (
               <button
                 key={diff}
                 onClick={() => setSelectedDifficulty(diff)}
-                className={`px-2.5 py-0.5 rounded-md transition-colors ${
+                className={`px-2.5 py-1 rounded-[6px] transition-colors ${
                   selectedDifficulty === diff
-                    ? "bg-stone-800 dark:bg-stone-200 text-white dark:text-stone-900 font-bold"
-                    : "hover:text-stone-900 dark:hover:text-stone-100"
+                    ? "bg-[#4a90e2] text-white font-bold"
+                    : "bg-[#f0f0f5] dark:bg-stone-800 hover:text-[#333333] dark:hover:text-white"
                 }`}
               >
                 {diff.toUpperCase()}
@@ -123,17 +120,22 @@ export default function DocsIndexPage() {
 
       {/* Guides Grid */}
       {filteredTopics.length === 0 ? (
-        <div className="py-16 text-center text-stone-500 dark:text-stone-400 bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800">
-          <p className="text-base font-semibold">No guides match your filter criteria.</p>
-          <p className="text-xs mt-1">Try clearing your search terms or selecting All Categories.</p>
+        <div className="portal-card py-16 text-center text-[#555555] dark:text-stone-400 p-6">
+          <p className="text-base font-semibold text-[#333333] dark:text-white">
+            No guides match your filter criteria.
+          </p>
+          <p className="text-xs mt-1">
+            Try clearing your search terms or selecting All Categories.
+          </p>
           <button
             onClick={() => {
               setSearchTerm("");
               setSelectedCategory("all");
               setSelectedDifficulty("all");
             }}
-            className="mt-4 px-4 py-2 bg-teal-600 text-white text-xs font-semibold rounded-lg hover:bg-teal-700 transition-colors"
+            className="btn-primary mt-4 px-4 py-2 text-xs font-semibold inline-flex items-center gap-1.5"
           >
+            <RotateCcw className="w-3.5 h-3.5" />
             Reset Filters
           </button>
         </div>
@@ -144,16 +146,16 @@ export default function DocsIndexPage() {
             return (
               <div
                 key={topic.id}
-                className="p-6 rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 hover:shadow-xl hover:border-teal-500/40 transition-all flex flex-col justify-between"
+                className="portal-card p-6 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-xs font-bold text-teal-600 dark:text-teal-400 flex items-center gap-1">
+                    <span className="text-xs font-bold text-[#4a90e2] flex items-center gap-1">
                       <BookOpen className="w-3.5 h-3.5" />
                       {topic.category}
                     </span>
                     <span
-                      className={`text-[10px] px-2 py-0.5 rounded font-mono font-medium border ${diffColors.bg} ${diffColors.text} ${diffColors.border}`}
+                      className={`text-[10px] px-2 py-0.5 rounded-[6px] font-mono font-medium border ${diffColors.bg} ${diffColors.text} ${diffColors.border}`}
                     >
                       {topic.difficulty}
                     </span>
@@ -163,12 +165,12 @@ export default function DocsIndexPage() {
                     href={`/docs/${topic.categorySlug}/${topic.slug}`}
                     className="block group"
                   >
-                    <h3 className="font-bold text-base text-stone-900 dark:text-stone-100 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors line-clamp-2">
+                    <h3 className="font-bold text-base text-[#333333] dark:text-stone-100 group-hover:text-[#4a90e2] transition-colors line-clamp-2">
                       {topic.title}
                     </h3>
                   </Link>
 
-                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-2 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-[#555555] dark:text-stone-400 mt-2 line-clamp-2 leading-relaxed">
                     {topic.summary}
                   </p>
 
@@ -177,7 +179,7 @@ export default function DocsIndexPage() {
                     {topic.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[10px] px-2 py-0.5 rounded-md bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 font-mono"
+                        className="text-[10px] px-2 py-0.5 rounded-[6px] bg-[#f0f0f5] dark:bg-stone-800 text-[#555555] dark:text-stone-300 font-mono border border-[#dddddd] dark:border-stone-700"
                       >
                         #{tag}
                       </span>
@@ -185,13 +187,13 @@ export default function DocsIndexPage() {
                   </div>
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs text-stone-400">
+                <div className="mt-5 pt-4 border-t border-[#dddddd] dark:border-stone-800 flex items-center justify-between text-xs text-[#555555] dark:text-stone-400">
                   <span className="flex items-center gap-1">
                     <Clock className="w-3.5 h-3.5" /> {topic.estimatedRead} min read
                   </span>
                   <Link
                     href={`/docs/${topic.categorySlug}/${topic.slug}`}
-                    className="font-semibold text-teal-600 dark:text-teal-400 hover:underline flex items-center gap-1"
+                    className="font-semibold text-[#4a90e2] hover:text-[#357abd] hover:underline flex items-center gap-1"
                   >
                     Read Guide <ArrowRight className="w-3.5 h-3.5" />
                   </Link>

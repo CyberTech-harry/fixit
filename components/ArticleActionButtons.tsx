@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Bookmark, Printer, Share2, Check, Download } from "lucide-react";
+import { Bookmark, Printer, Share2, Check } from "lucide-react";
 import { TopicItem } from "@/lib/types";
 
 interface ArticleActionButtonsProps {
@@ -65,10 +65,10 @@ export function ArticleActionButtons({ topic }: ArticleActionButtonsProps) {
     <div className="flex items-center gap-2 pt-2 flex-wrap">
       <button
         onClick={toggleBookmark}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+        className={`flex items-center gap-1.5 px-3.5 py-2 rounded-[10px] text-xs font-semibold transition-all shadow-sm ${
           isBookmarked
-            ? "bg-teal-600 text-white shadow-sm"
-            : "bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-teal-50 dark:hover:bg-teal-950/40 hover:text-teal-700 dark:hover:text-teal-400 border border-stone-200 dark:border-stone-700"
+            ? "bg-[#4a90e2] text-white"
+            : "bg-white dark:bg-stone-800 text-[#333333] dark:text-stone-200 hover:bg-[#f0f6fc] hover:text-[#4a90e2] border border-[#dddddd] dark:border-stone-700"
         }`}
       >
         <Bookmark className={`w-3.5 h-3.5 ${isBookmarked ? "fill-current" : ""}`} />
@@ -77,26 +77,26 @@ export function ArticleActionButtons({ topic }: ArticleActionButtonsProps) {
 
       <button
         onClick={handlePrint}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 transition-colors"
+        className="flex items-center gap-1.5 px-3.5 py-2 rounded-[10px] text-xs font-semibold bg-white dark:bg-stone-800 text-[#333333] dark:text-stone-200 hover:bg-[#f0f0f5] border border-[#dddddd] dark:border-stone-700 transition-colors shadow-sm"
         title="Print or Export as PDF"
       >
-        <Printer className="w-3.5 h-3.5" />
+        <Printer className="w-3.5 h-3.5 text-[#555555]" />
         <span>Print / PDF</span>
       </button>
 
       <button
         onClick={handleCopyLink}
-        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700 border border-stone-200 dark:border-stone-700 transition-colors"
+        className="flex items-center gap-1.5 px-3.5 py-2 rounded-[10px] text-xs font-semibold bg-white dark:bg-stone-800 text-[#333333] dark:text-stone-200 hover:bg-[#f0f0f5] border border-[#dddddd] dark:border-stone-700 transition-colors shadow-sm"
         title="Copy article URL"
       >
         {copiedLink ? (
           <>
-            <Check className="w-3.5 h-3.5 text-emerald-500" />
-            <span className="text-emerald-500">Link Copied</span>
+            <Check className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="text-emerald-600 font-bold">Link Copied</span>
           </>
         ) : (
           <>
-            <Share2 className="w-3.5 h-3.5" />
+            <Share2 className="w-3.5 h-3.5 text-[#555555]" />
             <span>Share</span>
           </>
         )}

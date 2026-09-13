@@ -154,6 +154,75 @@ footer a:hover {
   background-color: #122842 !important;
 }
 
+/* Design System Utilities */
+.portal-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .portal-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.portal-card {
+  background-color: var(--background-color-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark .portal-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.portal-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 14px rgba(74, 144, 226, 0.12);
+}
+
+.btn-primary {
+  background-color: var(--primary-color) !important;
+  color: var(--text-color-light) !important;
+  border-radius: var(--border-radius) !important;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-darker) !important;
+}
+
+.portal-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  color: var(--text-color-dark);
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark .portal-input {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.portal-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.25);
+}
+
 /* Custom modern scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
