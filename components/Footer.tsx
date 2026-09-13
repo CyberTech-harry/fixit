@@ -1,34 +1,40 @@
 import React from "react";
 import Link from "next/link";
-import { Terminal, ExternalLink } from "lucide-react";
+import { Terminal, ExternalLink, Globe } from "lucide-react";
 import { CATEGORIES } from "@/lib/topics-data";
 
 export function Footer() {
+  const totalGuides = CATEGORIES.reduce((acc, cat) => acc + (cat.topicCount || 0), 0);
+
   return (
-    <footer className="w-full bg-[#4a90e2] text-white border-t-2 border-[#ddd] mt-auto transition-colors">
+    <footer className="w-full bg-slate-900 text-slate-400 border-t border-slate-800 mt-auto transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand Col */}
-          <div className="md:col-span-1 space-y-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          {/* Brand Column */}
+          <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-[10px] bg-white/20 border border-white/30 flex items-center justify-center text-white">
+              <div className="w-8 h-8 rounded-[8px] bg-[#4a90e2] flex items-center justify-center text-white shadow-xs">
                 <Terminal className="w-4 h-4" />
               </div>
-              <span className="font-bold text-base text-white">
+              <span className="font-bold text-base text-white tracking-tight">
                 CyberTech Portal
               </span>
             </div>
-            <p className="text-xs text-blue-100 leading-relaxed">
-              IT documentation and troubleshooting reference across 10 technical domains. 117 guides covering Windows, macOS, Linux, networking, security, hardware, and more.
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Diagnostic procedures, multi-OS terminal commands, and infrastructure remediation workflows across {CATEGORIES.length} technical domains.
             </p>
+            <div className="pt-1 flex items-center gap-2 text-[11px] text-slate-400 font-mono">
+              <Globe className="w-3.5 h-3.5 text-[#4a90e2]" />
+              <span>fixit.cybertechcomps.com</span>
+            </div>
           </div>
 
           {/* Operating Systems */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
               Operating Systems
             </h4>
-            <ul className="space-y-2 text-xs text-blue-100">
+            <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <Link href="/docs/windows-os" className="hover:text-white hover:underline transition-colors">
                   Windows OS (15 Guides)
@@ -41,7 +47,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/docs/mobile" className="hover:text-white hover:underline transition-colors">
-                  Mobile — iOS &amp; Android (15 Guides)
+                  Mobile (iOS &amp; Android, 15 Guides)
                 </Link>
               </li>
               <li>
@@ -52,12 +58,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Infrastructure & Hardware */}
+          {/* Infrastructure & Tech */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
-              Infrastructure &amp; Tech
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
+              Infrastructure &amp; Systems
             </h4>
-            <ul className="space-y-2 text-xs text-blue-100">
+            <ul className="space-y-2 text-xs text-slate-400">
               <li>
                 <Link href="/docs/networking" className="hover:text-white hover:underline transition-colors">
                   Networking &amp; Internet (15 Guides)
@@ -75,21 +81,26 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/docs/emerging-tech" className="hover:text-white hover:underline transition-colors">
-                  Emerging Tech &amp; AI (7 Guides)
+                  Emerging Tech &amp; Cloud (8 Guides)
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Portal Utilities */}
+          {/* Portal Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
-              Portal
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
+              Resources &amp; Legal
             </h4>
-            <ul className="space-y-2 text-xs text-blue-100">
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <Link href="/docs" className="hover:text-white hover:underline transition-colors">
+                  Knowledge Base ({totalGuides} Guides)
+                </Link>
+              </li>
               <li>
                 <Link href="/bookmarks" className="hover:text-white hover:underline transition-colors">
-                  Bookmarks
+                  Saved Solutions
                 </Link>
               </li>
               <li>
@@ -99,7 +110,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-white hover:underline transition-colors inline-flex items-center gap-1"
                 >
-                  YouTube Channel <ExternalLink className="w-3 h-3" />
+                  Video Walkthroughs <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
               <li>
@@ -116,17 +127,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-6 border-t border-blue-400/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-blue-100">
+        <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>&copy; {new Date().getFullYear()} CyberTech IT Knowledge Base. All rights reserved.</p>
-          {/* Hidden admin access */}
-          <Link
-            href="/admin"
-            className="text-blue-300 hover:text-white transition-colors select-none"
-            title=""
-            aria-label="Portal management"
-          >
-            &middot;
-          </Link>
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] text-slate-400">Production Ready</span>
+            {/* Hidden admin dot */}
+            <Link
+              href="/admin"
+              className="text-slate-400 hover:text-slate-200 transition-colors select-none"
+              title=""
+              aria-label="Portal administration"
+            >
+              &middot;
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

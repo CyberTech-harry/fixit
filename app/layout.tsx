@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "CyberTech Portal | IT Troubleshooting Guides & Diagnostics",
-  description: "117 IT troubleshooting guides across 10 technical domains. Step-by-step fixes for Windows, macOS, Linux, networking, security, and hardware — with copy-ready terminal commands.",
+  description: "118 IT troubleshooting guides across 10 technical domains. Step-by-step fixes for Windows, macOS, Linux, networking, security, and hardware with copy-ready terminal commands.",
   keywords: [
     "IT Troubleshooting",
     "Windows Fixes",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "CyberTech Portal | IT Troubleshooting Guides",
-    description: "117 step-by-step IT guides with terminal commands for Windows, macOS, Linux, networking, security, and hardware.",
+    description: "118 step-by-step IT guides with terminal commands for Windows, macOS, Linux, networking, security, and hardware.",
     type: "website",
     url: "https://fixit.cybertechcomps.com",
   },
@@ -37,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col bg-[#f0f0f5] dark:bg-stone-950 text-[#333333] dark:text-stone-100 antialiased selection:bg-[#4a90e2] selection:text-white transition-colors duration-200">
+      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-[#4a90e2] selection:text-white transition-colors duration-200">
         <ThemeProvider>
           <Navbar />
           <main className="flex-1 w-full">{children}</main>

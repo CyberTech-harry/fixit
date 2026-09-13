@@ -4,38 +4,38 @@
 
 @layer base {
   :root {
-    /* User Specified Theme Variables */
+    /* Brand & Accent Palette */
     --primary-color: #4a90e2;
     --primary-color-darker: #357abd;
+    --primary-color-light: #f0f6fc;
+    --text-color-dark: #0f172a;
+    --text-color-medium: #475569;
+    --text-color-muted: #64748b;
     --text-color-light: #ffffff;
-    --text-color-dark: #333333;
-    --text-color-medium: #555555;
-    --background-color-light: #ffffff;
-    --background-color-body: #f0f0f5;
-    --box-shadow-color: rgba(0, 0, 0, 0.2);
-    --border-color: #dddddd;
-    --container-padding: 40px;
+    --background-color-body: #f8fafc;
+    --background-color-card: #ffffff;
+    --border-color: #e2e8f0;
     --border-radius: 10px;
-    --nav-height: 60px;
 
-    --background: 240 14% 95%; /* #f0f0f5 */
-    --foreground: 0 0% 20%;    /* #333333 */
+    /* Shadcn/Tailwind Variables */
+    --background: 210 40% 98%;      /* #f8fafc */
+    --foreground: 222.2 84% 4.9%;   /* #0f172a */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 20%;
+    --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 20%;
-    --primary: 212 72% 59%;     /* #4a90e2 */
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 212 72% 59%;          /* #4a90e2 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 20% 94%;
-    --secondary-foreground: 0 0% 20%;
-    --muted: 210 20% 95%;
-    --muted-foreground: 0 0% 33%; /* #555555 */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 212 70% 94%;
     --accent-foreground: 212 72% 35%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 20% 98%;
-    --border: 0 0% 87%;         /* #dddddd */
-    --input: 0 0% 87%;
+    --border: 214.3 31.8% 91.4%;     /* #e2e8f0 */
+    --input: 214.3 31.8% 91.4%;
     --ring: 212 72% 59%;
     --radius: 10px;
   }
@@ -43,12 +43,21 @@
   .dark {
     --primary-color: #4a90e2;
     --primary-color-darker: #357abd;
-    --background: 222 47% 8%;
-    --foreground: 210 20% 98%;
-    --card: 222 47% 11%;
-    --card-foreground: 210 20% 98%;
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 20% 98%;
+    --primary-color-light: #1e293b;
+    --text-color-dark: #f8fafc;
+    --text-color-medium: #cbd5e1;
+    --text-color-muted: #94a3b8;
+    --text-color-light: #ffffff;
+    --background-color-body: #0b0f19;
+    --background-color-card: #111827;
+    --border-color: #1f2937;
+
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
     --primary: 212 72% 59%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217 33% 17%;
@@ -66,62 +75,15 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-  background-color: var(--background-color-body) !important;
-  color: var(--text-color-dark) !important;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color-body);
+  color: var(--text-color-dark);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Header Styles from User Theme */
-header {
-  background-color: var(--primary-color) !important;
-  color: var(--text-color-light) !important;
-  border-bottom: 2px solid var(--border-color) !important;
-  box-shadow: 0 2px 5px var(--box-shadow-color) !important;
-}
-
-header nav a {
-  color: var(--text-color-light) !important;
-  font-size: 15px;
-  font-weight: 500;
-  transition: color 0.3s ease, opacity 0.3s ease;
-}
-
-header nav a:hover {
-  color: var(--text-color-light) !important;
-  text-decoration: underline;
-  opacity: 0.9;
-}
-
-/* Footer Styles from User Theme */
-footer {
-  background-color: var(--primary-color) !important;
-  color: var(--text-color-light) !important;
-  border-top: 2px solid var(--border-color) !important;
-}
-
-footer h3, footer h4, footer span.font-bold {
-  color: var(--text-color-light) !important;
-}
-
-footer p {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-footer a {
-  color: rgba(255, 255, 255, 0.85) !important;
-  transition: color 0.3s ease, opacity 0.3s ease;
-}
-
-footer a:hover {
-  color: #ffffff !important;
-  opacity: 1;
-  text-decoration: underline;
-}
-
-/* Primary Color Utility Overrides */
+/* Primary Color Utility Overrides for seamless backward compatibility */
 .bg-teal-600, .bg-teal-500 {
   background-color: var(--primary-color) !important;
 }
@@ -151,7 +113,7 @@ footer a:hover {
 }
 
 .bg-teal-950, .bg-teal-950\/80, .bg-teal-950\/60 {
-  background-color: #122842 !important;
+  background-color: #111e33 !important;
 }
 
 /* Design System Utilities */
@@ -171,33 +133,49 @@ footer a:hover {
 }
 
 .portal-card {
-  background-color: var(--background-color-light);
+  background-color: var(--background-color-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dark .portal-card {
-  background-color: #1e293b;
-  border-color: #334155;
+  background-color: #111827;
+  border-color: #1f2937;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .portal-card:hover {
-  border-color: var(--primary-color);
-  box-shadow: 0 4px 14px rgba(74, 144, 226, 0.12);
+  border-color: #b9d5f7;
+  box-shadow: 0 8px 24px rgba(74, 144, 226, 0.08);
+}
+
+.dark .portal-card:hover {
+  border-color: #2563eb;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--primary-color) !important;
-  color: var(--text-color-light) !important;
+  color: #ffffff !important;
   border-radius: var(--border-radius) !important;
   font-weight: 600;
-  transition: background-color 0.2s ease;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(74, 144, 226, 0.2);
 }
 
 .btn-primary:hover {
   background-color: var(--primary-color-darker) !important;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.28);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .portal-input {
@@ -208,7 +186,7 @@ footer a:hover {
   font-size: 14px;
   color: var(--text-color-dark);
   background-color: #ffffff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .dark .portal-input {
@@ -220,7 +198,7 @@ footer a:hover {
 .portal-input:focus {
   border-color: var(--primary-color);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.25);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
 }
 
 /* Custom modern scrollbar */
@@ -232,32 +210,41 @@ footer a:hover {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.4);
+  background: rgba(156, 163, 175, 0.35);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 0.7);
+  background: rgba(156, 163, 175, 0.6);
 }
 
 /* Article rich typography styles */
 .prose-guide h2 {
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(156, 163, 175, 0.2);
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color-dark);
 }
 .prose-guide h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+  color: var(--text-color-dark);
+}
+.prose-guide h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.35rem;
 }
 .prose-guide p {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
   line-height: 1.75;
+  color: var(--text-color-medium);
 }
 .prose-guide ol {
   list-style-type: decimal;
@@ -274,11 +261,17 @@ footer a:hover {
 .prose-guide li {
   margin-bottom: 0.35rem;
   line-height: 1.6;
+  color: var(--text-color-medium);
 }
 .prose-guide code {
-  font-family: monospace;
-  background-color: rgba(156, 163, 175, 0.15);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background-color: rgba(74, 144, 226, 0.08);
+  color: #1e40af;
   padding: 0.15rem 0.35rem;
   border-radius: 0.25rem;
   font-size: 0.875em;
+}
+.dark .prose-guide code {
+  background-color: rgba(74, 144, 226, 0.15);
+  color: #93c5fd;
 }

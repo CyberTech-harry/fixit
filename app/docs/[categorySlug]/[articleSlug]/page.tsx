@@ -42,85 +42,88 @@ export default function ArticleReaderPage({ params }: ArticlePageProps) {
   const category = getCategoryBySlug(topic.categorySlug);
   const diffColors = getDifficultyColor(topic.difficulty);
 
-  // JSON-LD Structured Data Schema for SEO (HowTo and TechArticle)
+  // JSON-LD Structured Data
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: topic.title,
+    "@type": "TechArticle",
+    headline: topic.title,
     description: topic.summary,
-    totalTime: `PT${topic.estimatedRead}M`,
-    step: topic.solutions.map((sol, index) => ({
-      "@type": "HowToStep",
-      position: index + 1,
-      name: `Step ${index + 1}`,
-      text: sol,
-    })),
+    articleSection: topic.category,
+    keywords: topic.tags.join(", "),
+    timeRequired: `PT${topic.estimatedRead}M`,
+    proficiencyLevel: topic.difficulty,
+    author: {
+      "@type": "Organization",
+      name: "CyberTech IT Engineering Team",
+      url: "https://fixit.cybertechcomps.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "CyberTech Computer Systems",
+      url: "https://fixit.cybertechcomps.com",
+    },
   };
 
   return (
-    <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20">
-      {/* JSON-LD Script */}
+    <div className="portal-container py-8 pb-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Left Column: Collapsible Sidebar */}
-        <DocsSidebar
-          currentSlug={topic.slug}
-          currentCategorySlug={topic.categorySlug}
-        />
+        {/* Left Column: Navigation Sidebar */}
+        <DocsSidebar currentCategorySlug={topic.categorySlug} />
 
         {/* Center Column: Documentation Content */}
         <article className="flex-1 min-w-0 py-2 max-w-4xl">
           {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 text-xs text-[#555555] dark:text-stone-400 mb-6 flex-wrap">
+          <nav className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-6 flex-wrap">
             <Link href="/" className="hover:text-[#4a90e2] transition-colors">
               Home
             </Link>
-            <ChevronRight className="w-3 h-3 text-[#dddddd]" />
+            <ChevronRight className="w-3 h-3 text-slate-300 dark:text-slate-600" />
             <Link href="/docs" className="hover:text-[#4a90e2] transition-colors">
               Docs
             </Link>
-            <ChevronRight className="w-3 h-3 text-[#dddddd]" />
+            <ChevronRight className="w-3 h-3 text-slate-300 dark:text-slate-600" />
             <Link
               href={`/docs/${topic.categorySlug}`}
               className="hover:text-[#4a90e2] transition-colors"
             >
               {topic.category}
             </Link>
-            <ChevronRight className="w-3 h-3 text-[#dddddd]" />
-            <span className="text-[#333333] dark:text-stone-100 font-semibold truncate max-w-xs">
+            <ChevronRight className="w-3 h-3 text-slate-300 dark:text-slate-600" />
+            <span className="text-slate-900 dark:text-white font-semibold truncate max-w-xs">
               {topic.title}
             </span>
           </nav>
 
           {/* Guide Header Banner */}
-          <div className="space-y-4 pb-6 border-b border-[#dddddd] dark:border-stone-800">
-            <div className="flex items-center gap-2.5 flex-wrap">
+          <div className="space-y-3.5 pb-6 border-b border-slate-200 dark:border-slate-800">
+            <div className="flex items-center gap-2 flex-wrap">
               <Link
                 href={`/docs/${topic.categorySlug}`}
-                className="inline-flex items-center gap-1 text-xs font-bold text-[#4a90e2] bg-[#f0f6fc] dark:bg-slate-800 px-2.5 py-1 rounded-[6px] border border-[#4a90e2]/30"
+                className="inline-flex items-center gap-1 text-xs font-semibold text-[#4a90e2] bg-blue-50 dark:bg-slate-800 px-2.5 py-0.5 rounded-[6px] border border-blue-200 dark:border-blue-900"
               >
                 <BookOpen className="w-3.5 h-3.5" />
                 {topic.category}
               </Link>
               <span
-                className={`text-xs px-2.5 py-0.5 rounded-[6px] font-mono font-bold border ${diffColors.bg} ${diffColors.text} ${diffColors.border}`}
+                className={`text-[10px] px-2 py-0.5 rounded-[6px] font-mono font-medium border ${diffColors.bg} ${diffColors.text} ${diffColors.border}`}
               >
                 {topic.difficulty}
               </span>
-              <span className="text-xs text-[#555555] dark:text-stone-400 flex items-center gap-1">
+              <span className="text-xs text-slate-400 flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5" /> {topic.estimatedRead} min read
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl font-extrabold text-[#333333] dark:text-white tracking-tight leading-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
               {topic.title}
             </h1>
 
-            <p className="text-sm sm:text-base text-[#555555] dark:text-stone-300 leading-relaxed font-normal">
+            <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
               {topic.summary}
             </p>
 
@@ -128,7 +131,7 @@ export default function ArticleReaderPage({ params }: ArticlePageProps) {
             <ArticleActionButtons topic={topic} />
           </div>
 
-          {/* Multimedia Companion (Synchronized Video & Audio Player) */}
+          {/* Multimedia Companion */}
           <VideoSynchronizer
             videoUrl={topic.videoUrl}
             audioUrl={topic.audioUrl}
@@ -138,7 +141,7 @@ export default function ArticleReaderPage({ params }: ArticlePageProps) {
           {/* Multi-OS Executable Commands */}
           {topic.commands && (
             <div className="my-6">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#555555] dark:text-stone-400 mb-2">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 Quick Terminal Execution Commands
               </h3>
               <MultiOSTerminal commands={topic.commands} />
@@ -153,19 +156,19 @@ export default function ArticleReaderPage({ params }: ArticlePageProps) {
           {/* Main Rich Content Section */}
           <div
             id="article-content"
-            className="prose-guide text-[#333333] dark:text-stone-200 mt-8"
+            className="prose-guide text-slate-800 dark:text-slate-200 mt-8"
             dangerouslySetInnerHTML={{ __html: topic.details || topic.summary }}
           />
 
           {/* Tags */}
-          <div className="mt-10 pt-6 border-t border-[#dddddd] dark:border-stone-800 flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-medium text-[#555555] dark:text-stone-400 flex items-center gap-1">
+          <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-medium text-slate-400 flex items-center gap-1">
               <Tag className="w-3.5 h-3.5" /> Tags:
             </span>
             {topic.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs px-2.5 py-1 rounded-[6px] bg-[#f0f0f5] dark:bg-stone-800 text-[#555555] dark:text-stone-300 font-mono border border-[#dddddd] dark:border-stone-700"
+                className="text-xs px-2.5 py-0.5 rounded-[4px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-mono border border-slate-200 dark:border-slate-700"
               >
                 #{tag}
               </span>
