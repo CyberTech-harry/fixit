@@ -16,25 +16,25 @@ export function Footer() {
               <div className="w-8 h-8 rounded-[8px] bg-[#4a90e2] flex items-center justify-center text-white shadow-xs">
                 <Terminal className="w-4 h-4" />
               </div>
-              <span className="font-bold text-base text-white tracking-tight">
+              <span className="font-bold text-lg text-white tracking-tight">
                 CyberTech FixIT
               </span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-400 leading-relaxed">
               Verified diagnostic playbooks, multi-OS terminal commands, and infrastructure remediation workflows across {CATEGORIES.length} technical disciplines.
             </p>
-            <div className="pt-1 flex items-center gap-2 text-[11px] text-slate-400 font-mono">
-              <Globe className="w-3.5 h-3.5 text-[#4a90e2]" />
+            <div className="pt-1 flex items-center gap-2 text-xs text-slate-400 font-mono">
+              <Globe className="w-4 h-4 text-[#4a90e2]" />
               <span>fixit.cybertechcomps.com</span>
             </div>
           </div>
 
           {/* Operating Systems */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 mb-3.5">
               Operating Systems
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <ul className="space-y-2.5 text-sm text-slate-400">
               <li>
                 <Link href="/docs/windows-os" className="hover:text-white hover:underline transition-colors">
                   Windows OS (15 Guides)
@@ -60,10 +60,10 @@ export function Footer() {
 
           {/* Web & Cloud Engineering */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 mb-3.5">
               Web &amp; Cloud Engineering
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <ul className="space-y-2.5 text-sm text-slate-400">
               <li>
                 <Link href="/docs/web-development" className="hover:text-white hover:underline transition-colors">
                   Web Development (7 Guides)
@@ -89,10 +89,10 @@ export function Footer() {
 
           {/* SEO & Digital Growth */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 mb-3.5">
               SEO &amp; Digital Growth
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <ul className="space-y-2.5 text-sm text-slate-400">
               <li>
                 <Link href="/docs/seo-growth" className="hover:text-white hover:underline transition-colors">
                   Technical SEO (7 Guides)
@@ -118,10 +118,10 @@ export function Footer() {
 
           {/* Resources & Legal */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-slate-200 mb-3.5">
               Resources &amp; Legal
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
+            <ul className="space-y-2.5 text-sm text-slate-400">
               <li>
                 <Link href="/docs" className="hover:text-white hover:underline transition-colors">
                   Knowledge Base ({totalGuides} Guides)
@@ -147,19 +147,19 @@ export function Footer() {
                   href="https://youtu.be/p4kQbt0QUkY"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white hover:underline transition-colors inline-flex items-center gap-1"
+                  className="hover:text-white hover:underline transition-colors inline-flex items-center gap-1.5"
                 >
-                  Video Walkthroughs <ExternalLink className="w-3 h-3" />
+                  Video Walkthroughs <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-400">
           <p>&copy; {new Date().getFullYear()} CyberTech IT Knowledge Base. All rights reserved.</p>
           <div className="flex items-center gap-3">
-            <span className="text-[11px] text-slate-400">Production Ready</span>
+            <span className="text-xs font-mono text-slate-400">Production Ready</span>
             {/* Hidden admin dot */}
             <Link
               href="/admin"

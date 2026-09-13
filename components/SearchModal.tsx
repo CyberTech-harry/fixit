@@ -204,31 +204,31 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 flex-wrap">
                       <span className="text-xs font-semibold text-[#4a90e2] flex items-center gap-1">
-                        <BookOpen className="w-3 h-3" />
+                        <BookOpen className="w-3.5 h-3.5" />
                         {topic.category}
                       </span>
                       <span
-                        className={`text-[10px] px-1.5 py-0.2 rounded-[4px] font-medium border ${diffColors.bg} ${diffColors.text} ${diffColors.border}`}
+                        className={`text-xs px-2 py-0.5 rounded-[4px] font-mono font-medium border ${diffColors.bg} ${diffColors.text} ${diffColors.border}`}
                       >
                         {topic.difficulty}
                       </span>
-                      <span className="text-[10px] text-[#555555] dark:text-stone-400">
+                      <span className="text-xs text-[#555555] dark:text-stone-400 font-mono">
                         {topic.estimatedRead} min read
                       </span>
                     </div>
-                    <h4 className="text-sm font-semibold text-[#333333] dark:text-stone-100 line-clamp-1">
+                    <h4 className="text-base font-semibold text-[#333333] dark:text-stone-100 line-clamp-1">
                       {topic.title}
                     </h4>
-                    <p className="text-xs text-[#555555] dark:text-stone-400 line-clamp-1 mt-0.5">
+                    <p className="text-sm text-[#555555] dark:text-stone-400 line-clamp-1 mt-1">
                       {topic.summary}
                     </p>
-                    <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
+                    <div className="flex items-center gap-1.5 mt-2 flex-wrap">
                       {topic.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="inline-flex items-center gap-0.5 text-[10px] px-1.5 py-0.5 rounded-[4px] bg-[#f0f0f5] dark:bg-stone-800 text-[#555555] dark:text-stone-400 border border-[#dddddd] dark:border-stone-700"
+                          className="inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-[4px] bg-[#f0f0f5] dark:bg-stone-800 text-[#555555] dark:text-stone-400 border border-[#dddddd] dark:border-stone-700 font-mono"
                         >
-                          <Tag className="w-2.5 h-2.5" />
+                          <Tag className="w-3 h-3" />
                           {tag}
                         </span>
                       ))}
@@ -254,10 +254,10 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
           </div>
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-white dark:bg-stone-800 rounded border border-[#dddddd] dark:border-stone-700 text-[10px]">↑↓</kbd> to navigate
+              <kbd className="px-1.5 py-0.5 bg-white dark:bg-stone-800 rounded border border-[#dddddd] dark:border-stone-700 text-xs font-mono">↑↓</kbd> to navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-white dark:bg-stone-800 rounded border border-[#dddddd] dark:border-stone-700 text-[10px]">↵</kbd> to open
+              <kbd className="px-1.5 py-0.5 bg-white dark:bg-stone-800 rounded border border-[#dddddd] dark:border-stone-700 text-xs font-mono">↵</kbd> to open
             </span>
           </div>
         </div>

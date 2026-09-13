@@ -138,26 +138,26 @@ export function CommentsSection({ articleId }: CommentsSectionProps) {
             className="p-4 rounded-xl bg-white dark:bg-stone-900/40 border border-stone-200/80 dark:border-stone-800/80 space-y-2"
           >
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-full bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-400 flex items-center justify-center font-bold text-xs">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-[6px] bg-blue-50 dark:bg-slate-800 text-[#4a90e2] border border-blue-200 dark:border-slate-700 flex items-center justify-center font-bold text-xs">
                   {comment.author[0]?.toUpperCase() || "U"}
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-stone-900 dark:text-stone-200 mr-2">
+                  <span className="text-sm font-bold text-slate-900 dark:text-slate-200 mr-2">
                     {comment.author}
                   </span>
                   {comment.authorRole && (
-                    <span className="text-[10px] px-1.5 py-0.2 rounded bg-teal-50 dark:bg-teal-950 text-teal-700 dark:text-teal-400 font-medium">
+                    <span className="text-xs px-2 py-0.5 rounded-[4px] bg-blue-50 dark:bg-slate-800 text-[#4a90e2] font-semibold border border-blue-200 dark:border-slate-700">
                       {comment.authorRole}
                     </span>
                   )}
                 </div>
               </div>
-              <span className="text-[10px] text-stone-400 flex items-center gap-1">
-                <Clock className="w-3 h-3" /> {comment.createdAt}
+              <span className="text-xs text-slate-400 font-mono flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5" /> {comment.createdAt}
               </span>
             </div>
-            <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed pl-9">
+            <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed pl-10.5">
               {comment.content}
             </p>
           </div>

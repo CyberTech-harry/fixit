@@ -33,32 +33,32 @@ export function VideoSynchronizer({ videoUrl = "https://www.youtube.com/watch?v=
             <Video className="w-4 h-4" />
           </div>
           <div className="text-left">
-            <h4 className="text-xs font-bold text-stone-900 dark:text-stone-100 flex items-center gap-2">
-              Synchronized Video & Audio Companion
-              <span className="text-[10px] px-1.5 py-0.2 bg-teal-50 dark:bg-teal-950 text-teal-700 dark:text-teal-400 rounded font-normal">
+            <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+              Synchronized Video &amp; Audio Companion
+              <span className="text-xs px-2 py-0.5 bg-blue-50 dark:bg-slate-800 text-[#4a90e2] rounded-[4px] font-semibold border border-blue-200 dark:border-slate-700">
                 Multimedia Guide
               </span>
             </h4>
-            <p className="text-[11px] text-stone-500 dark:text-stone-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               Watch step-by-step video demonstration or listen to the technical audio walkthrough.
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-xs font-medium text-teal-600 dark:text-teal-400">
+          <span className="text-xs font-semibold text-[#4a90e2]">
             {isOpen ? "Collapse Player" : "Watch / Listen"}
           </span>
           {isOpen ? (
-            <ChevronUp className="w-4 h-4 text-stone-500" />
+            <ChevronUp className="w-4 h-4 text-slate-500" />
           ) : (
-            <ChevronDown className="w-4 h-4 text-stone-500" />
+            <ChevronDown className="w-4 h-4 text-slate-500" />
           )}
         </div>
       </button>
 
       {isOpen && (
-        <div className="p-4 sm:p-6 border-t border-stone-200 dark:border-stone-800 space-y-4">
+        <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 space-y-4">
           {/* Mode Switcher */}
           <div className="flex items-center gap-2">
             <button
@@ -104,16 +104,16 @@ export function VideoSynchronizer({ videoUrl = "https://www.youtube.com/watch?v=
               />
             </div>
           ) : (
-            <div className="p-5 rounded-xl bg-stone-900 text-white space-y-3">
+            <div className="p-5 rounded-[10px] bg-slate-900 text-white space-y-3 border border-slate-800">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-teal-600/20 text-teal-400 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-[8px] bg-blue-600/20 text-[#4a90e2] flex items-center justify-center">
                   <Volume2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h5 className="text-xs font-bold text-stone-100">
+                  <h5 className="text-sm font-bold text-slate-100">
                     Tech Trouble Solved: Audio Edition
                   </h5>
-                  <p className="text-[11px] text-stone-400">
+                  <p className="text-xs text-slate-400">
                     Audio overview and troubleshooting methodology
                   </p>
                 </div>

@@ -93,10 +93,10 @@ export function StepChecklist({ slug, steps }: StepChecklistProps) {
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-stone-100 dark:bg-stone-800 h-2 rounded-full overflow-hidden mb-6">
+      <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-[4px] overflow-hidden mb-6">
         <div
           className={`h-full transition-all duration-300 ${
-            isAllComplete ? "bg-emerald-500" : "bg-teal-600"
+            isAllComplete ? "bg-emerald-500" : "bg-[#4a90e2]"
           }`}
           style={{ width: `${progressPercent}%` }}
         />
@@ -110,23 +110,23 @@ export function StepChecklist({ slug, steps }: StepChecklistProps) {
             <div
               key={index}
               onClick={() => toggleStep(index)}
-              className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer select-none transition-all ${
+              className={`flex items-start gap-3 p-3.5 rounded-[8px] border cursor-pointer select-none transition-all ${
                 isChecked
-                  ? "bg-teal-50/70 dark:bg-teal-950/30 border-teal-200 dark:border-teal-800/60 text-stone-600 dark:text-stone-300"
-                  : "bg-stone-50/60 dark:bg-stone-800/40 border-stone-200/80 dark:border-stone-800 text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800"
+                  ? "bg-blue-50/70 dark:bg-blue-950/30 border-blue-200 dark:border-blue-900/60 text-slate-600 dark:text-slate-300"
+                  : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
               <button
                 type="button"
-                className={`mt-0.5 w-5 h-5 rounded-md flex items-center justify-center transition-colors shrink-0 ${
+                className={`mt-0.5 w-5 h-5 rounded-[4px] flex items-center justify-center transition-colors shrink-0 ${
                   isChecked
-                    ? "bg-teal-600 text-white"
-                    : "border-2 border-stone-300 dark:border-stone-600 hover:border-teal-500"
+                    ? "bg-[#4a90e2] text-white"
+                    : "border-2 border-slate-300 dark:border-slate-600 hover:border-[#4a90e2]"
                 }`}
               >
                 {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
               </button>
-              <span className={`text-sm leading-relaxed ${isChecked ? "line-through opacity-70" : ""}`}>
+              <span className={`text-sm sm:text-base leading-relaxed ${isChecked ? "line-through opacity-70" : ""}`}>
                 {step.replace(/^(Step \d+:|\d+\.)\s*/, "")}
               </span>
             </div>
@@ -135,7 +135,7 @@ export function StepChecklist({ slug, steps }: StepChecklistProps) {
       </div>
 
       {isAllComplete && (
-        <div className="mt-4 p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2 text-emerald-800 dark:text-emerald-300 text-xs font-medium animate-in fade-in">
+        <div className="mt-4 p-3.5 rounded-[8px] bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 flex items-center gap-2.5 text-emerald-800 dark:text-emerald-300 text-sm font-medium">
           <Sparkles className="w-4 h-4 text-emerald-500 shrink-0" />
           <span>All troubleshooting steps verified! The system should now operate normally.</span>
         </div>

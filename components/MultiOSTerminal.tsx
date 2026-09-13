@@ -48,37 +48,37 @@ export function MultiOSTerminal({ commands }: MultiOSTerminalProps) {
             {commands.powershell && (
               <button
                 onClick={() => setActiveTab("powershell")}
-                className={`px-2.5 py-1 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-[11px] cursor-pointer ${
+                className={`px-3 py-1.5 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-xs cursor-pointer ${
                   activeTab === "powershell"
                     ? "bg-[#4a90e2] text-white font-semibold shadow-xs"
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                <Laptop className="w-3 h-3 text-white" /> PowerShell
+                <Laptop className="w-3.5 h-3.5 text-white" /> PowerShell
               </button>
             )}
             {commands.cmd && (
               <button
                 onClick={() => setActiveTab("cmd")}
-                className={`px-2.5 py-1 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-[11px] cursor-pointer ${
+                className={`px-3 py-1.5 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-xs cursor-pointer ${
                   activeTab === "cmd"
                     ? "bg-[#4a90e2] text-white font-semibold shadow-xs"
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                <TerminalSquare className="w-3 h-3 text-white" /> CMD
+                <TerminalSquare className="w-3.5 h-3.5 text-white" /> CMD
               </button>
             )}
             {commands.bash && (
               <button
                 onClick={() => setActiveTab("bash")}
-                className={`px-2.5 py-1 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-[11px] cursor-pointer ${
+                className={`px-3 py-1.5 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-xs cursor-pointer ${
                   activeTab === "bash"
                     ? "bg-[#4a90e2] text-white font-semibold shadow-xs"
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                <Apple className="w-3 h-3 text-white" /> Bash / Zsh
+                <Apple className="w-3.5 h-3.5 text-white" /> Bash / Zsh
               </button>
             )}
           </div>

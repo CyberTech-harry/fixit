@@ -52,9 +52,9 @@ export function TableOfContents() {
   if (headings.length === 0) return null;
 
   return (
-    <div className="space-y-3 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
-      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
-        <List className="w-3.5 h-3.5 text-[#4a90e2]" />
+    <div className="space-y-3.5 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
+      <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+        <List className="w-4 h-4 text-[#4a90e2]" />
         <span>On This Page</span>
       </div>
 
@@ -70,7 +70,7 @@ export function TableOfContents() {
                 document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" });
                 setActiveId(item.id);
               }}
-              className={`block text-xs py-1.5 transition-colors line-clamp-1 ${
+              className={`block text-sm py-2 transition-colors line-clamp-1 ${
                 item.level === 3 ? "pl-4" : "pl-1 font-medium"
               } ${
                 isActive
