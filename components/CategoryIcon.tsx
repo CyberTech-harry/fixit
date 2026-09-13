@@ -12,6 +12,7 @@ import {
   Sparkles,
   Terminal,
   Folder,
+  Code2,
 } from "lucide-react";
 
 interface CategoryIconProps {
@@ -60,6 +61,11 @@ export function CategoryIcon({ name, className = "w-5 h-5" }: CategoryIconProps)
     case "emerging tech & guides":
     case "emerging-tech":
       return <Sparkles className={className} />;
+    case "code":
+    case "code2":
+    case "web development":
+    case "web-development":
+      return <Code2 className={className} />;
     default:
       return <Terminal className={className} />;
   }

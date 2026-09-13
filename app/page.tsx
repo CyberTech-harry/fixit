@@ -138,7 +138,7 @@ export default function HomePage() {
               <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Guides</span>
             </div>
             <div className="portal-card p-3 text-center">
-              <span className="text-xl font-bold text-[#4a90e2] block font-mono">10</span>
+              <span className="text-xl font-bold text-[#4a90e2] block font-mono">{CATEGORIES.length}</span>
               <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Domains</span>
             </div>
             <div className="portal-card p-3 text-center">
@@ -207,7 +207,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10 Core Domains Directory: Scannable & Clean */}
+      {/* 11 Technical Domains Directory: Scannable & Clean */}
       <section className="portal-container">
         <div className="flex items-center justify-between mb-5 pb-3 border-b border-slate-200 dark:border-slate-800">
           <div>
@@ -215,7 +215,7 @@ export default function HomePage() {
               Explore by Technical Domain
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Structured documentation across operating systems and infrastructure stacks.
+              Structured documentation across operating systems, web engineering, and infrastructure stacks.
             </p>
           </div>
           <Link
@@ -226,7 +226,7 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5">
           {CATEGORIES.map((cat) => (
             <Link
               key={cat.slug}
@@ -263,15 +263,15 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Category Filter Tabs including Emerging Tech */}
+          {/* Category Filter Tabs including Web Development */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
             {[
               { label: "All", slug: "all" },
-              { label: "Emerging Tech", slug: "emerging-tech" },
+              { label: "Web Development", slug: "web-development" },
               { label: "Windows OS", slug: "windows-os" },
               { label: "Networking", slug: "networking" },
               { label: "Security", slug: "security" },
-              { label: "Hardware", slug: "hardware" },
+              { label: "Emerging Tech", slug: "emerging-tech" },
             ].map((tab) => (
               <button
                 key={tab.slug}

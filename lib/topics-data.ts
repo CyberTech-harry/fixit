@@ -90,7 +90,16 @@ export const CATEGORIES: CategoryInfo[] = [
     "sortOrder": 10,
     "description": "AI tool fundamentals, Cloud storage models, smart home automation protocols, and legacy hardware repurposing.",
     "id": "cat-emerging-tech",
-    "topicCount": 8
+    "topicCount": 7
+  },
+  {
+    "name": "Web Development",
+    "slug": "web-development",
+    "icon": "Code2",
+    "sortOrder": 11,
+    "description": "Full-stack architecture, GitHub CI/CD, custom domains (.co.ke/.com), Cloudflare DNS & SSL, cloud databases (Supabase/Firebase/Railway/Render), auth, and M-Pesa & payment integrations.",
+    "id": "cat-web-development",
+    "topicCount": 6
   }
 ];
 
@@ -4607,9 +4616,9 @@ export const TOPICS_DATA: TopicItem[] = [
   "id": "topic-web-publishing-fullstack",
   "title": "Deploy & Publish Full-Stack Web Applications: GitHub CI/CD, Custom TLDs (.co.ke/.com), Cloudflare DNS, Cloud Databases (Supabase/Firebase/Railway/Render), Auth & Mobile Money Payments (Daraja 3.0 & PayHero)",
   "slug": "deploy-publish-fullstack-web-apps-github-domains-cloudflare-databases-payments",
-  "category": "Emerging Tech & Guides",
-  "categorySlug": "emerging-tech",
-  "categoryIcon": "Sparkles",
+  "category": "Web Development",
+  "categorySlug": "web-development",
+  "categoryIcon": "Code2",
   "difficulty": "ADVANCED",
   "estimatedRead": 18,
   "summary": "Comprehensive engineering blueprint for building and deploying production web applications: code repository on GitHub, domain acquisition (.com, .co.ke), Cloudflare edge DNS & SSL proxying, managed databases (Supabase, Firebase, Railway, Render), secure auth (NextAuth & Firebase), and mobile money integrations with Safaricom Daraja 3.0 M-Pesa and PayHero Kenya API.",
@@ -4655,6 +4664,271 @@ export const TOPICS_DATA: TopicItem[] = [
   "helpfulness": {
     "yes": 94,
     "no": 2
+  }
+}
+,
+{
+  "id": "topic-web-domains-dns-cloudflare",
+  "title": "Domain Registration (.co.ke & .com), DNS Architecture & Cloudflare Edge Security",
+  "slug": "domain-registration-dns-architecture-cloudflare-edge-security",
+  "category": "Web Development",
+  "categorySlug": "web-development",
+  "categoryIcon": "Code2",
+  "difficulty": "ADVANCED",
+  "estimatedRead": 16,
+  "summary": "Complete engineering manual for purchasing global and Kenyan ccTLD domains (.com, .co.ke via KeNIC registrars), configuring authoritative DNS records (A, AAAA, CNAME, TXT, MX), nameserver delegation to Cloudflare, CNAME flattening at apex, Full (Strict) SSL encryption, and edge firewall security.",
+  "solutions": [
+    "Select certified registrars for generic TLDs (Cloudflare/Namecheap) and Kenyan ccTLDs (.co.ke via KeNIC accredited registrars).",
+    "Configure authoritative DNS records: Apex A/AAAA, CNAME aliasing, MX for mail delivery, and TXT for SPF, DKIM, and DMARC verification.",
+    "Delegate domain nameservers to Cloudflare authoritative servers and enable DNSSEC cryptographic signing.",
+    "Enable CNAME flattening on root apex (@) domains to route traffic seamlessly to modern hosting backends.",
+    "Activate Cloudflare Full (Strict) SSL/TLS encryption mode with origin certificates to prevent man-in-the-middle attacks.",
+    "Deploy Cloudflare Edge WAF rules, rate limiting, and Brotli compression to boost security and performance."
+  ],
+  "details": "<h2 class=\"text-xl font-bold mb-2\">DNS Architecture, ccTLD Engineering & Cloudflare Edge Infrastructure</h2>\n<p>\nA web application's availability and brand trust begin with DNS architecture. This technical guide covers domain acquisition strategies across global and local registries, authoritative record mapping, apex routing, and enterprise edge security configuration using Cloudflare.\n</p>\n\n<h3 class=\"font-semibold mt-6 mb-2\">1. Domain Registrars & TLD Taxonomy: Global (.com) vs Kenyan (.co.ke)</h3>\n<p>\nChoosing the right domain extension impacts search engine ranking, regional brand trust, and legal jurisdictions.\n</p>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Global gTLDs (.com, .org, .net, .io):</strong> Governed by ICANN. Use registrars that do not mark up renewal prices and provide free WHOIS privacy protection, such as Cloudflare Registrar or Namecheap. Global TLDs support standard automated DNSSEC and instant transfer authorization codes (EPP codes).</li>\n  <li><strong>Kenyan ccTLDs (.co.ke, .ke, .or.ke, .ac.ke):</strong> Governed by the Kenya Network Information Centre (<strong>KeNIC</strong>). Domains are provisioned through accredited Kenyan registrars (e.g., Truehost Cloud, Sasahost, EACdirectory, Kenya Web Experts).\n    <ul class=\"list-circle pl-6 mt-1 space-y-1\">\n      <li>Registration requires verifying domain availability against KeNIC registry databases.</li>\n      <li>Local Kenyan domains (.co.ke) offer significant SEO advantages for search queries originating within East Africa, building domestic buyer confidence and ensuring regional trademark compliance.</li>\n      <li>Registrar lock must be managed through the registrar portal when transferring nameserver authority.</li>\n    </ul>\n  </li>\n</ul>\n\n<h3 class=\"font-semibold mt-6 mb-2\">2. Authoritative DNS Records Matrix</h3>\n<p>\nDNS translates human-friendly hostnames into machine-routable network endpoints. Understand the role and configuration syntax of each record:\n</p>\n<div class=\"overflow-x-auto my-3\">\n  <table class=\"w-full text-xs text-left border border-slate-200 dark:border-slate-800 rounded-[6px]\">\n    <thead class=\"bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300\">\n      <tr>\n        <th class=\"p-2 border-b\">Record</th>\n        <th class=\"p-2 border-b\">Target Name</th>\n        <th class=\"p-2 border-b\">Value / Destination</th>\n        <th class=\"p-2 border-b\">Purpose & Architectural Role</th>\n      </tr>\n    </thead>\n    <tbody class=\"divide-y divide-slate-100 dark:divide-slate-800\">\n      <tr>\n        <td class=\"p-2 font-mono font-bold text-[#4a90e2]\">A</td>\n        <td class=\"p-2 font-mono\">@ (apex)</td>\n        <td class=\"p-2 font-mono\">192.0.2.1</td>\n        <td class=\"p-2\">Direct IPv4 address mapping. Used for standalone servers or dedicated VPS instances.</td>\n      </tr>\n      <tr>\n        <td class=\"p-2 font-mono font-bold text-[#4a90e2]\">AAAA</td>\n        <td class=\"p-2 font-mono\">@ (apex)</td>\n        <td class=\"p-2 font-mono\">2001:db8::1</td>\n        <td class=\"p-2\">Direct IPv6 address mapping for modern dual-stack routing.</td>\n      </tr>\n      <tr>\n        <td class=\"p-2 font-mono font-bold text-[#4a90e2]\">CNAME</td>\n        <td class=\"p-2 font-mono\">www, fixit</td>\n        <td class=\"p-2 font-mono\">cybertech-harry.github.io</td>\n        <td class=\"p-2\">Canonical alias. Maps subdomains to cloud providers (GitHub Pages, Vercel, Render).</td>\n      </tr>\n      <tr>\n        <td class=\"p-2 font-mono font-bold text-[#4a90e2]\">MX</td>\n        <td class=\"p-2 font-mono\">@</td>\n        <td class=\"p-2 font-mono\">aspmx.l.google.com (Priority 1)</td>\n        <td class=\"p-2\">Mail Exchanger. Routes organizational emails to Google Workspace, Zoho, or Microsoft 365.</td>\n      </tr>\n      <tr>\n        <td class=\"p-2 font-mono font-bold text-[#4a90e2]\">TXT (SPF)</td>\n        <td class=\"p-2 font-mono\">@</td>\n        <td class=\"p-2 font-mono\">v=spf1 include:_spf.google.com ~all</td>\n        <td class=\"p-2\">Sender Policy Framework. Authorizes specific mail servers to send on behalf of the domain.</td>\n      </tr>\n      <tr>\n        <td class=\"p-2 font-mono font-bold text-[#4a90e2]\">TXT (DKIM)</td>\n        <td class=\"p-2 font-mono\">google._domainkey</td>\n        <td class=\"p-2 font-mono\">v=DKIM1; k=rsa; p=MIGfMA0GCS...</td>\n        <td class=\"p-2\">Cryptographic public key verifying outgoing email authenticity and preventing spoofing.</td>\n      </tr>\n      <tr>\n        <td class=\"p-2 font-mono font-bold text-[#4a90e2]\">TXT (DMARC)</td>\n        <td class=\"p-2 font-mono\">_dmarc</td>\n        <td class=\"p-2 font-mono\">v=DMARC1; p=reject; rua=mailto:...</td>\n        <td class=\"p-2\">Enforces policy action when SPF/DKIM checks fail, protecting brand reputation from phishing.</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n\n<h3 class=\"font-semibold mt-6 mb-2\">3. Nameserver Delegation & Cloudflare CNAME Flattening</h3>\n<p>\nTo place Cloudflare in front of your web application:\n</p>\n<ol class=\"list-decimal pl-6 mb-4 space-y-1\">\n  <li><strong>Nameserver Update:</strong> In your domain registrar portal (Truehost or Namecheap), locate \"Custom Nameservers\" and replace the registrar defaults with your Cloudflare assigned pair (e.g., <code>ada.ns.cloudflare.com</code> and <code>burt.ns.cloudflare.com</code>).</li>\n  <li><strong>Apex CNAME Flattening:</strong> Standard DNS specifications (RFC 1034) prohibit CNAME records on the root apex domain (<code>@</code> or <code>cybertechcomps.com</code>) because it conflicts with SOA and NS records. Cloudflare resolves this via <em>CNAME Flattening</em>: Cloudflare queries the target CNAME dynamically and returns authoritative A/AAAA records directly to requesting DNS resolvers.</li>\n  <li><strong>Proxy Status (Orange vs Grey Cloud):</strong>\n    <ul class=\"list-circle pl-6 mt-1 space-y-1\">\n      <li><strong>Proxied (Orange Cloud):</strong> Requests pass through Cloudflare's edge CDN. Hides origin IP, mitigates DDoS attacks, enables Web Application Firewall (WAF), and serves cached assets globally.</li>\n      <li><strong>DNS Only (Grey Cloud):</strong> Bypasses Cloudflare proxy. Mandatory for mail servers (MX), FTP, SSH tunnels, or bare IP endpoints that do not operate on standard HTTP/HTTPS ports.</li>\n    </ul>\n  </li>\n</ol>\n\n<h3 class=\"font-semibold mt-6 mb-2\">4. SSL/TLS Encryption: Full (Strict) Mode Setup</h3>\n<p>\nNever use <em>Flexible</em> SSL in production. Flexible mode encrypts traffic between the visitor and Cloudflare, but sends unencrypted plaintext HTTP between Cloudflare and your origin server, exposing user sessions and payment credentials to network sniffing.\n</p>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Full (Strict) Mode:</strong> Requires an end-to-end encrypted HTTPS handshake between the visitor, Cloudflare Edge, and your origin server with a valid, trusted SSL/TLS certificate.</li>\n  <li><strong>Cloudflare Origin CA Certificate:</strong> In the Cloudflare dashboard under <em>SSL/TLS &gt; Origin Server</em>, generate a free 15-year Origin Certificate. Install the certificate (<code>origin.crt</code>) and private key (<code>origin.key</code>) on your Nginx, Apache, or Docker reverse proxy.</li>\n  <li><strong>Always Use HTTPS:</strong> Enable \"Always Use HTTPS\" and \"Automatic HTTPS Rewrites\" to upgrade all insecure HTTP requests to HTTPS with 301 redirects.</li>\n  <li><strong>Minimum TLS Version:</strong> Enforce <strong>TLS 1.3</strong> or TLS 1.2 minimum. Disable deprecated TLS 1.0 and 1.1 ciphers to maintain strict PCI-DSS and security compliance.</li>\n</ul>\n\n<h3 class=\"font-semibold mt-6 mb-2\">5. Edge Caching & Web Application Firewall (WAF)</h3>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Security Rules:</strong> Under <em>Security &gt; WAF</em>, create custom firewall rules to block high-risk ASN networks, challenge automated scrapers, and rate-limit sensitive endpoints (such as <code>/api/v1/auth/login</code> and <code>/api/v1/mpesa/process</code>).</li>\n  <li><strong>Page Rules & Cache Rules:</strong> Bypass cache for all dynamic API routes (<code>/api/*</code>: Cache Level: Bypass). Enforce Edge Cache TTL for static assets (<code>/_next/static/*</code>: Cache Level: Cache Everything, Edge Cache TTL: 1 month).</li>\n</ul>",
+  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "audioUrl": "/audio/tech-trouble-solved.mp3",
+  "tags": [
+    "Domains",
+    "KeNIC",
+    "DNS",
+    "Cloudflare",
+    "SSL/TLS",
+    "CNAME Flattening",
+    "WAF",
+    "Security"
+  ],
+  "commands": {
+    "powershell": "Resolve-DnsName -Name cybertechcomps.com -Type A -Server 1.1.1.1; Resolve-DnsName -Name _dmarc.cybertechcomps.com -Type TXT",
+    "cmd": "nslookup -type=CNAME fixit.cybertechcomps.com 1.1.1.1 & nslookup -type=MX cybertechcomps.com 8.8.8.8",
+    "bash": "dig +trace cybertechcomps.com && curl -Iv https://fixit.cybertechcomps.com 2>&1 | grep -E 'SSL|HTTP/'"
+  },
+  "checklists": [
+    "Register domain name (.com via Namecheap/Cloudflare or .co.ke via KeNIC accredited registrar).",
+    "Unlock domain at registrar and obtain EPP authorization code if transferring nameserver authority.",
+    "Add domain to Cloudflare dashboard and capture assigned nameserver addresses.",
+    "Update custom nameservers in registrar portal to point to Cloudflare authoritative servers.",
+    "Configure DNS A/AAAA records for root apex (@) or CNAME record for subdomains with Proxy enabled.",
+    "Add organizational mail routing MX records and email verification TXT records (SPF, DKIM, DMARC).",
+    "Set Cloudflare SSL/TLS encryption mode to Full (Strict) and install Origin Certificate on origin host.",
+    "Verify DNS propagation across global edge nodes using dig or Resolve-DnsName."
+  ],
+  "viewsCount": 290,
+  "helpfulness": {
+    "yes": 88,
+    "no": 1
+  }
+},
+{
+  "id": "topic-web-cloud-databases",
+  "title": "Cloud Database Architecture: Supabase, Firebase, Railway & Render Integrations",
+  "slug": "cloud-database-architecture-supabase-firebase-railway-render",
+  "category": "Web Development",
+  "categorySlug": "web-development",
+  "categoryIcon": "Code2",
+  "difficulty": "ADVANCED",
+  "estimatedRead": 20,
+  "summary": "Architectural blueprints and connection setups for 4 leading cloud databases: Supabase PostgreSQL with PgBouncer connection pooling and Row Level Security, Firebase Firestore NoSQL collections, Railway containerized microservices and private meshes, and Render managed PostgreSQL instances.",
+  "solutions": [
+    "Provision and configure Supabase PostgreSQL with PgBouncer connection pooling on port 6543 for serverless environments.",
+    "Implement granular Row Level Security (RLS) policies in PostgreSQL to secure data access at the database layer.",
+    "Model document structures in Firebase Firestore and enforce strict security rules with client and Admin SDKs.",
+    "Deploy microservice databases on Railway.app with internal private networking and automated environment variable propagation.",
+    "Establish secure SSL connections to Render.com managed PostgreSQL using sslmode=require and internal low-latency URLs.",
+    "Implement automated schema migrations and connection retry logic with Prisma ORM and Drizzle ORM."
+  ],
+  "details": "<h2 class=\"text-xl font-bold mb-2\">Cloud Database Architecture: Relational, NoSQL, and Containerized Mesh Systems</h2>\n<p>\nChoosing the appropriate database architecture and managing persistent connections is critical for application performance and data integrity. This blueprint examines 4 industry-standard cloud database platforms, detailing connection pooling, schema migrations, and enterprise security policies.\n</p>\n\n<h3 class=\"font-semibold mt-6 mb-2\">1. Supabase: Managed PostgreSQL & Serverless Connection Pooling</h3>\n<p>\nSupabase provides a complete open-source Firebase alternative built entirely on PostgreSQL. Because serverless runtimes (Next.js Edge, AWS Lambda) create new execution contexts per request, direct database connections quickly exhaust PostgreSQL's connection ceiling (e.g., <code>max_connections = 100</code>).\n</p>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>PgBouncer Connection Pooling (Port 6543):</strong> Always use the pooled connection string for runtime queries from serverless APIs:\n    <pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code># Runtime Pooled Connection (Next.js / Serverless)\nDATABASE_URL=\"postgresql://postgres.[REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:6543/postgres?pgbouncer=true\"\n\n# Direct Connection (Prisma Migrations / DDL only on Port 5432)\nDIRECT_URL=\"postgresql://postgres.[REF]:[PASSWORD]@aws-0-[REGION].pooler.supabase.com:5432/postgres\"</code></pre>\n  </li>\n  <li><strong>Row Level Security (RLS):</strong> Never query tables from client applications without active RLS. With RLS enabled, PostgreSQL inspects each row during SELECT, INSERT, UPDATE, and DELETE:\n    <pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>-- Enable RLS on target table\nALTER TABLE orders ENABLE ROW LEVEL SECURITY;\n\n-- Policy: Users can only read their own purchase orders\nCREATE POLICY \"Users view own orders\" \nON orders FOR SELECT \nUSING (auth.uid() = user_id);\n\n-- Policy: Service role or admin can view all records\nCREATE POLICY \"Admin full access\" \nON orders FOR ALL \nUSING (auth.jwt() ->> 'role' = 'admin');</code></pre>\n  </li>\n  <li><strong>Prisma ORM Integration:</strong> In <code>prisma/schema.prisma</code>, specify both <code>url</code> and <code>directUrl</code> to prevent migration lock errors while benefiting from connection pooling during API executions.</li>\n</ul>\n\n<h3 class=\"font-semibold mt-6 mb-2\">2. Firebase Firestore: Serverless NoSQL Document Store</h3>\n<p>\nFirebase Firestore is a flexible, horizontally scalable NoSQL cloud database designed for real-time data sync across mobile and web clients.\n</p>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Document & Collection Hierarchy:</strong> Organize data hierarchically (e.g., <code>users/{userId}/invoices/{invoiceId}</code>). Avoid deep nesting beyond 4 levels; use top-level collections with compound queries instead.</li>\n  <li><strong>Client SDK vs Firebase Admin SDK:</strong>\n    <ul class=\"list-circle pl-6 mt-1 space-y-1\">\n      <li><strong>Client SDK (Frontend):</strong> Connects directly from React/Next.js components. Queries are evaluated strictly against Firestore Security Rules.</li>\n      <li><strong>Admin SDK (Backend / API Routes):</strong> Operates with full root privileges, bypassing security rules. Initialized on the server using service account credentials:\n        <pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>import * as admin from 'firebase-admin';\n\nif (!admin.apps.length) {\n  admin.initializeApp({\n    credential: admin.credential.cert({\n      projectId: process.env.FIREBASE_PROJECT_ID,\n      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,\n      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\\\\\\\n/g, '\\\\n'),\n    }),\n  });\n}\nexport const db = admin.firestore();</code></pre>\n      </li>\n    </ul>\n  </li>\n  <li><strong>Firestore Security Rules:</strong>\n    <pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /users/{userId} {\n      allow read, write: if request.auth != null && request.auth.uid == userId;\n    }\n    match /public_guides/{guideId} {\n      allow read: if true;\n      allow write: if request.auth.token.role == 'editor';\n    }\n  }\n}</code></pre>\n  </li>\n</ul>\n\n<h3 class=\"font-semibold mt-6 mb-2\">3. Railway.app: Microservice Containers & Private Networking</h3>\n<p>\nRailway provides infrastructure orchestration with native support for multi-container topologies (Postgres + Redis + Node.js API).\n</p>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Private Service Mesh:</strong> When deploying a database alongside backend services in the same Railway project, communication stays within Railway's private wireguard mesh (e.g., <code>postgres.railway.internal:5432</code>). This eliminates latency, bypasses external egress bandwidth fees, and protects the database from public network scanners.</li>\n  <li><strong>Automated Variable Injection:</strong> Railway automatically populates dependent variables (<code>${{Postgres.DATABASE_URL}}</code>) directly into application environments upon service link.</li>\n  <li><strong>TCP Proxy for Local Development:</strong> For running local seed scripts or migrations, generate a temporary Public TCP Proxy address via the Railway dashboard without altering production mesh settings.</li>\n</ul>\n\n<h3 class=\"font-semibold mt-6 mb-2\">4. Render.com: Managed PostgreSQL & Production Web Services</h3>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Internal vs External Database URLs:</strong>\n    <ul class=\"list-circle pl-6 mt-1 space-y-1\">\n      <li><strong>Internal Connection String:</strong> Used by web services hosted on Render (e.g., <code>dpg-xxxx-a:5432/dbname</code>). Zero egress bandwidth cost, sub-millisecond local network latency.</li>\n      <li><strong>External Connection String:</strong> Used by external CI/CD pipelines, local development, or external APIs (e.g., <code>dpg-xxxx-a.oregon-postgres.render.com</code>). <strong>Mandatory parameter:</strong> Append <code>?sslmode=require</code> to prevent plaintext connection rejection.</li>\n    </ul>\n  </li>\n  <li><strong>Automated Backups & Point-in-Time Recovery:</strong> Render automatically takes daily snapshots of managed databases with zero downtime. Enable automated point-in-time recovery (PITR) for mission-critical financial applications.</li>\n</ul>",
+  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "audioUrl": "/audio/tech-trouble-solved.mp3",
+  "tags": [
+    "Databases",
+    "PostgreSQL",
+    "Supabase",
+    "Firebase",
+    "Firestore",
+    "Railway",
+    "Render",
+    "PgBouncer",
+    "RLS"
+  ],
+  "commands": {
+    "powershell": "Test-NetConnection -ComputerName db.projectref.supabase.co -Port 6543; npx prisma migrate deploy",
+    "cmd": "npx prisma db pull & npx prisma generate",
+    "bash": "PGSSLMODE=require psql \"$DATABASE_URL\" -c 'SELECT version();' && npx prisma migrate status"
+  },
+  "checklists": [
+    "Select relational (Supabase/Render/Railway) or NoSQL (Firestore) engine based on data access patterns.",
+    "Provision PostgreSQL database instance and configure PgBouncer pooling on port 6543 for serverless runtimes.",
+    "Split database connection strings into runtime pooled URL and direct DDL migration URL.",
+    "Enable Row Level Security (RLS) policies on all tables containing customer or sensitive organizational data.",
+    "Configure Firebase Admin SDK service account key with secure environment variable newlines formatting.",
+    "Establish private service networking on Railway.app to isolate database traffic from the public internet.",
+    "Enforce sslmode=require on all external Render.com connection strings.",
+    "Run database schema migrations via CI/CD pipeline before promoting code releases to production."
+  ],
+  "viewsCount": 315,
+  "helpfulness": {
+    "yes": 91,
+    "no": 2
+  }
+},
+{
+  "id": "topic-web-authentication-sessions",
+  "title": "Authentication & Session Security: NextAuth (Auth.js) & Firebase Auth",
+  "slug": "authentication-session-security-nextauth-firebase-auth",
+  "category": "Web Development",
+  "categorySlug": "web-development",
+  "categoryIcon": "Code2",
+  "difficulty": "ADVANCED",
+  "estimatedRead": 16,
+  "summary": "Production authentication architecture covering OAuth 2.0 (Google, GitHub), Credentials login with password hashing, HTTP-only SameSite secure session cookies, JWT vs Database sessions, Next.js Edge Middleware route guards, and Role-Based Access Control (RBAC).",
+  "solutions": [
+    "Configure NextAuth.js / Auth.js with OAuth providers and Credentials provider using Argon2 or Bcrypt hashing.",
+    "Store session tokens strictly in HTTP-only, Secure, SameSite=Lax cookies to eliminate XSS token theft.",
+    "Implement Next.js Edge Middleware (middleware.ts) to intercept unauthorized traffic before pages or API routes render.",
+    "Enforce Role-Based Access Control (RBAC) across server components, API route handlers, and client navigation.",
+    "Integrate Firebase Authentication client-side sign-in with server-side ID token verification via Firebase Admin SDK.",
+    "Mitigate Cross-Site Request Forgery (CSRF) and automate refresh token rotation for long-lived sessions."
+  ],
+  "details": "<h2 class=\"text-xl font-bold mb-2\">Production Authentication Architecture & Session Security</h2>\n<p>\nAuthentication establishes who a user is, while authorization determines what resources they can access. Storing authentication tokens in browser <code>localStorage</code> or omitting server-side middleware invites catastrophic XSS and CSRF token theft. This guide details resilient authentication implementation using NextAuth.js (Auth.js) and Firebase Authentication.\n</p>\n\n<h3 class=\"font-semibold mt-6 mb-2\">1. Session Storage Architecture: Cookie Security vs LocalStorage</h3>\n<p>\nThe single most critical security decision in modern web authentication is where tokens reside:\n</p>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Vulnerable: LocalStorage / SessionStorage:</strong> Any script running in the browser (including third-party analytics, chat widgets, or injected XSS payloads) can read <code>localStorage.getItem('token')</code> and transmit it to an attacker's server. Never store JWTs or session secrets in browser storage.</li>\n  <li><strong>Secure: HTTP-only Cookies:</strong> When a cookie has the <code>HttpOnly</code> flag, browser JavaScript cannot access it via <code>document.cookie</code>.\n    <ul class=\"list-circle pl-6 mt-1 space-y-1\">\n      <li><code>HttpOnly: true</code> - Completely prevents client script token extraction.</li>\n      <li><code>Secure: true</code> - Guarantees cookies are transmitted exclusively over encrypted HTTPS connections.</li>\n      <li><code>SameSite: 'Lax' or 'Strict'</code> - Prevents Cross-Site Request Forgery (CSRF) attacks by restricting cookie transmission on cross-origin requests.</li>\n    </ul>\n  </li>\n</ul>\n\n<h3 class=\"font-semibold mt-6 mb-2\">2. NextAuth.js / Auth.js (v5) Implementation</h3>\n<p>\nNextAuth.js provides standardized session management with built-in CSRF defenses and OAuth state verification.\n</p>\n<pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>// auth.config.ts\nimport type { NextAuthConfig } from 'next-auth';\nimport Google from 'next-auth/providers/google';\nimport GitHub from 'next-auth/providers/github';\nimport Credentials from 'next-auth/providers/credentials';\nimport bcrypt from 'bcryptjs';\nimport { db } from '@/lib/db';\n\nexport const authConfig: NextAuthConfig = {\n  providers: [\n    Google({ clientId: process.env.GOOGLE_CLIENT_ID, clientSecret: process.env.GOOGLE_CLIENT_SECRET }),\n    GitHub({ clientId: process.env.GITHUB_ID, clientSecret: process.env.GITHUB_SECRET }),\n    Credentials({\n      async authorize(credentials) {\n        if (!credentials?.email || !credentials?.password) return null;\n        const user = await db.user.findUnique({ where: { email: String(credentials.email) } });\n        if (!user || !user.passwordHash) return null;\n        const isValid = await bcrypt.compare(String(credentials.password), user.passwordHash);\n        if (!isValid) return null;\n        return { id: user.id, email: user.email, name: user.name, role: user.role };\n      }\n    })\n  ],\n  session: { strategy: 'jwt', maxAge: 30 * 24 * 60 * 60 }, // 30 days\n  callbacks: {\n    async jwt({ token, user }) {\n      if (user) {\n        token.id = user.id;\n        token.role = (user as any).role || 'user';\n      }\n      return token;\n    },\n    async session({ session, token }) {\n      if (token && session.user) {\n        session.user.id = token.id as string;\n        (session.user as any).role = token.role;\n      }\n      return session;\n    }\n  }\n};</code></pre>\n\n<h3 class=\"font-semibold mt-6 mb-2\">3. Edge Middleware Route Protection</h3>\n<p>\nDo not rely solely on client-side redirect hooks. Edge middleware executes before incoming requests reach server components or API route handlers, eliminating flash of unauthorized content.\n</p>\n<pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>// middleware.ts\nimport { NextResponse } from 'next/server';\nimport type { NextRequest } from 'next/server';\nimport { getToken } from 'next-auth/jwt';\n\nexport async function middleware(req: NextRequest) {\n  const token = await getToken({ req, secret: process.env.AUTH_SECRET });\n  const { pathname } = req.nextUrl;\n\n  // Protect admin routes\n  if (pathname.startsWith('/admin')) {\n    if (!token) {\n      return NextResponse.redirect(new URL('/login?callbackUrl=' + pathname, req.url));\n    }\n    if (token.role !== 'admin') {\n      return NextResponse.redirect(new URL('/unauthorized', req.url));\n    }\n  }\n\n  // Protect authenticated user dashboard\n  if (pathname.startsWith('/dashboard')) {\n    if (!token) {\n      return NextResponse.redirect(new URL('/login?callbackUrl=' + pathname, req.url));\n    }\n  }\n\n  return NextResponse.next();\n}\n\nexport const config = {\n  matcher: ['/dashboard/:path*', '/admin/:path*', '/api/protected/:path*'],\n};</code></pre>\n\n<h3 class=\"font-semibold mt-6 mb-2\">4. Firebase Authentication Server Token Verification</h3>\n<p>\nWhen using Firebase Authentication on the client, verify ID tokens on your backend before granting access to sensitive data:\n</p>\n<pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>// app/api/v1/user/profile/route.ts\nimport { NextRequest, NextResponse } from 'next/server';\nimport * as admin from 'firebase-admin';\n\nexport async function GET(req: NextRequest) {\n  const authHeader = req.headers.get('Authorization');\n  if (!authHeader || !authHeader.startsWith('Bearer ')) {\n    return NextResponse.json({ error: 'Missing authorization header' }, { status: 401 });\n  }\n\n  const idToken = authHeader.split('Bearer ')[1];\n  try {\n    const decodedToken = await admin.auth().verifyIdToken(idToken);\n    const userId = decodedToken.uid;\n    // Process privileged request for authenticated userId\n    return NextResponse.json({ success: true, userId, email: decodedToken.email });\n  } catch (error) {\n    return NextResponse.json({ error: 'Invalid or expired token' }, { status: 403 });\n  }\n}</code></pre>",
+  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "audioUrl": "/audio/tech-trouble-solved.mp3",
+  "tags": [
+    "Authentication",
+    "NextAuth",
+    "Auth.js",
+    "Firebase Auth",
+    "OAuth",
+    "JWT",
+    "Cookies",
+    "Middleware",
+    "RBAC"
+  ],
+  "commands": {
+    "powershell": "openssl rand -base64 32; npm list next-auth @auth/core",
+    "cmd": "curl -I -c cookies.txt https://fixit.cybertechcomps.com/api/auth/csrf",
+    "bash": "export AUTH_SECRET=$(openssl rand -hex 32) && echo \"AUTH_SECRET=$AUTH_SECRET\" >> .env.local"
+  },
+  "checklists": [
+    "Generate high-entropy AUTH_SECRET (32+ bytes) and configure in production environment variables.",
+    "Register OAuth applications in Google Cloud Console and GitHub Developer Settings.",
+    "Configure NextAuth.js providers with Credentials and OAuth strategies.",
+    "Enforce HTTP-only, Secure, SameSite=Lax cookie options for all session identifiers.",
+    "Deploy Edge Middleware (middleware.ts) to intercept unauthenticated and unauthorized requests.",
+    "Implement Role-Based Access Control (RBAC) callbacks to inject user roles into session tokens.",
+    "Verify Firebase ID tokens server-side using admin.auth().verifyIdToken() in API routes.",
+    "Audit application dependencies against known CVEs using npm audit or Snyk."
+  ],
+  "viewsCount": 275,
+  "helpfulness": {
+    "yes": 86,
+    "no": 1
+  }
+},
+{
+  "id": "topic-web-payment-gateways",
+  "title": "Payment Gateway Integrations: Safaricom Daraja 3.0 M-Pesa STK Push & PayHero Kenya API",
+  "slug": "payment-gateway-integrations-safaricom-daraja-mpesa-payhero-api",
+  "category": "Web Development",
+  "categorySlug": "web-development",
+  "categoryIcon": "Code2",
+  "difficulty": "ADVANCED",
+  "estimatedRead": 22,
+  "summary": "End-to-end payment integration manual for Safaricom Daraja 3.0 (Lipa Na M-Pesa Online STK push, OAuth 2.0 token generation, password calculation, webhook callback handling, transaction status query) and PayHero Kenya API (unified channel tokens, automated STK push, and IPN HMAC signature validation).",
+  "solutions": [
+    "Generate Safaricom Daraja 3.0 OAuth 2.0 bearer access token using Base64 encoded consumer credentials.",
+    "Calculate timestamped password hash (Base64 of Shortcode, Passkey, and YYYYMMDDHHmmss timestamp).",
+    "Dispatch Lipa Na M-Pesa Online STK Push requests to customer mobile devices via the Daraja 3.0 processrequest endpoint.",
+    "Deploy an asynchronous HTTPS webhook callback endpoint to ingest and validate payment confirmation payloads.",
+    "Query Daraja 3.0 transaction status endpoint to resolve edge cases where callbacks time out or network drops.",
+    "Integrate PayHero Kenya API for multi-channel collections and verify IPN webhook signatures with HMAC hashes.",
+    "Enforce database transaction idempotency to prevent duplicate fulfillment from replayed webhook requests."
+  ],
+  "details": "<h2 class=\"text-xl font-bold mb-2\">Production Payment Integration: Safaricom Daraja 3.0 & PayHero Kenya API</h2>\n<p>\nIn East Africa, M-Pesa is the primary settlement medium for digital commerce. Integrating payment infrastructure requires understanding asynchronous telco webhooks, cryptographic password calculations, OAuth bearer tokens, and bulletproof idempotency controls to prevent lost payments or double-crediting.\n</p>\n\n<h3 class=\"font-semibold mt-6 mb-2\">1. Safaricom Daraja 3.0 STK Push Lifecycle</h3>\n<p>\nLipa Na M-Pesa Online (STK Push) triggers an on-screen PIN prompt directly on the customer's phone:\n</p>\n<ol class=\"list-decimal pl-6 mb-4 space-y-1\">\n  <li><strong>Customer Checkout:</strong> User enters mobile number (e.g., <code>0712345678</code> or <code>254712345678</code>) and submits payment order.</li>\n  <li><strong>Backend Server:</strong> Obtains OAuth token from Safaricom, computes the security password hash, and dispatches an STK Push request to Daraja API.</li>\n  <li><strong>Safaricom Core Gateway:</strong> Pushes prompt to SIM toolkit on customer handset. Customer enters M-Pesa PIN.</li>\n  <li><strong>Customer Handset:</strong> Validates PIN and executes fund debit. Safaricom returns SMS receipt to customer.</li>\n  <li><strong>Asynchronous Webhook Callback:</strong> Safaricom dispatches an HTTP POST request containing full transaction metadata to your configured <code>CallBackURL</code>.</li>\n  <li><strong>Backend Reconciliation:</strong> Backend parses callback payload, validates <code>ResultCode === 0</code>, checks receipt number against database, and credits user order.</li>\n</ol>\n\n<h3 class=\"font-semibold mt-6 mb-2\">2. Daraja 3.0 Implementation Code</h3>\n<pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>// lib/daraja.ts\nexport async function getDarajaToken(): Promise<string> {\n  const consumerKey = process.env.MPESA_CONSUMER_KEY!;\n  const consumerSecret = process.env.MPESA_CONSUMER_SECRET!;\n  const auth = Buffer.from(`${consumerKey}:${consumerSecret}`).toString('base64');\n\n  const res = await fetch('https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials', {\n    headers: { Authorization: `Basic ${auth}` },\n    next: { revalidate: 3500 } // Cache token for 58 minutes\n  });\n\n  const data = await res.json();\n  if (!res.ok) throw new Error('Failed to get Daraja OAuth token');\n  return data.access_token;\n}\n\nexport async function triggerStkPush(params: {\n  phoneNumber: string;\n  amount: number;\n  orderId: string;\n  callbackUrl: string;\n}) {\n  const token = await getDarajaToken();\n  const shortcode = process.env.MPESA_SHORTCODE!;\n  const passkey = process.env.MPESA_PASSKEY!;\n  \n  // Format timestamp: YYYYMMDDHHmmss\n  const now = new Date();\n  const timestamp = now.toISOString().replace(/[^0-9]/g, '').slice(0, 14);\n  const password = Buffer.from(`${shortcode}${passkey}${timestamp}`).toString('base64');\n\n  // Format phone number to 254XXXXXXXXX\n  let phone = params.phoneNumber.replace(/\\\\D/g, '');\n  if (phone.startsWith('0')) phone = '254' + phone.slice(1);\n  if (phone.startsWith('+')) phone = phone.slice(1);\n\n  const payload = {\n    BusinessShortCode: shortcode,\n    Password: password,\n    Timestamp: timestamp,\n    TransactionType: \"CustomerPayBillOnline\", // or CustomerBuyGoodsOnline\n    Amount: Math.round(params.amount),\n    PartyA: phone,\n    PartyB: shortcode,\n    PhoneNumber: phone,\n    CallBackURL: params.callbackUrl,\n    AccountReference: params.orderId,\n    TransactionDesc: \"Portal Subscription Payment\"\n  };\n\n  const res = await fetch('https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest', {\n    method: 'POST',\n    headers: {\n      Authorization: `Bearer ${token}`,\n      'Content-Type': 'application/json'\n    },\n    body: JSON.stringify(payload)\n  });\n\n  const responseData = await res.json();\n  return responseData; // contains CheckoutRequestID, ResponseCode\n}</code></pre>\n\n<h3 class=\"font-semibold mt-6 mb-2\">3. Asynchronous Webhook Callback Route with Idempotency</h3>\n<pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>// app/api/v1/mpesa/callback/route.ts\nimport { NextRequest, NextResponse } from 'next/server';\nimport { db } from '@/lib/db';\n\nexport async function POST(req: NextRequest) {\n  try {\n    const data = await req.json();\n    const { Body } = data;\n    const { stkCallback } = Body;\n\n    const resultCode = stkCallback.ResultCode;\n    const resultDesc = stkCallback.ResultDesc;\n    const checkoutRequestId = stkCallback.CheckoutRequestID;\n\n    // ResultCode 0 indicates payment success\n    if (resultCode === 0) {\n      const items = stkCallback.CallbackMetadata.Item;\n      const receipt = items.find((i: any) => i.Name === 'MpesaReceiptNumber')?.Value;\n      const amount = items.find((i: any) => i.Name === 'Amount')?.Value;\n      const phone = items.find((i: any) => i.Name === 'PhoneNumber')?.Value;\n      const txDate = items.find((i: any) => i.Name === 'TransactionDate')?.Value;\n\n      // Idempotency: Check if transaction has already been fulfilled\n      const existingTx = await db.payment.findUnique({\n        where: { mpesaReceipt: receipt }\n      });\n\n      if (existingTx) {\n        // Acknowledge receipt without double crediting\n        return NextResponse.json({ ResultCode: 0, ResultDesc: \"Accepted duplicate\" });\n      }\n\n      // Record payment and update order\n      await db.$transaction([\n        db.payment.create({\n          data: {\n            checkoutRequestId,\n            mpesaReceipt: receipt,\n            amount: Number(amount),\n            phoneNumber: String(phone),\n            status: \"COMPLETED\",\n            rawPayload: JSON.stringify(data)\n          }\n        }),\n        db.order.updateMany({\n          where: { checkoutRequestId },\n          data: { status: \"PAID\", receiptNumber: receipt }\n        })\n      ]);\n    } else {\n      // Payment was cancelled by user (1032) or failed\n      await db.order.updateMany({\n        where: { checkoutRequestId },\n        data: { status: \"FAILED\", failureReason: resultDesc }\n      });\n    }\n\n    // Always respond with HTTP 200 to Safaricom\n    return NextResponse.json({ ResultCode: 0, ResultDesc: \"Callback processed successfully\" });\n  } catch (error) {\n    console.error(\"M-Pesa Callback Error:\", error);\n    return NextResponse.json({ ResultCode: 0, ResultDesc: \"Callback acknowledged with internal log\" });\n  }\n}</code></pre>\n\n<h3 class=\"font-semibold mt-6 mb-2\">4. PayHero Kenya API: Unified Multi-Channel Gateway</h3>\n<p>\nPayHero provides aggregated settlement across Till numbers, Paybills, and mobile wallets with automated webhook callbacks.\n</p>\n<pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>// Initiating PayHero Express STK Push\nexport async function createPayHeroPayment(params: {\n  amount: number;\n  phone: string;\n  orderReference: string;\n}) {\n  const authHeader = 'Basic ' + Buffer.from(\n    `${process.env.PAYHERO_API_KEY}:${process.env.PAYHERO_API_SECRET}`\n  ).toString('base64');\n\n  const res = await fetch('https://backend.payhero.co.ke/api/v2/payments', {\n    method: 'POST',\n    headers: {\n      Authorization: authHeader,\n      'Content-Type': 'application/json'\n    },\n    body: JSON.stringify({\n      amount: params.amount,\n      phone_number: params.phone,\n      channel_id: parseInt(process.env.PAYHERO_CHANNEL_ID!),\n      provider: 'm-pesa',\n      external_reference: params.orderReference,\n      callback_url: 'https://api.cybertechcomps.com/api/v1/payhero/webhook'\n    })\n  });\n\n  return await res.json();\n}</code></pre>",
+  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "audioUrl": "/audio/tech-trouble-solved.mp3",
+  "tags": [
+    "Payments",
+    "M-Pesa",
+    "Daraja 3.0",
+    "STK Push",
+    "PayHero",
+    "Webhooks",
+    "Idempotency",
+    "Fintech"
+  ],
+  "commands": {
+    "powershell": "Invoke-RestMethod -Uri \"https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials\" -Headers @{Authorization=\"Basic $([Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes('$KEY:$SECRET')))\"}",
+    "cmd": "curl -I https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+    "bash": "curl -X POST https://api.cybertechcomps.com/api/v1/mpesa/callback -H 'Content-Type: application/json' -d '{\"Body\":{\"stkCallback\":{\"ResultCode\":1032}}}'"
+  },
+  "checklists": [
+    "Register developer account on Safaricom Developer Portal and create a Daraja 3.0 application.",
+    "Obtain Consumer Key, Consumer Secret, Passkey, and BusinessShortCode for sandbox testing.",
+    "Implement OAuth 2.0 bearer token fetch with 58-minute in-memory caching.",
+    "Compute timestamped security password (Base64 of Shortcode + Passkey + Timestamp).",
+    "Build STK push endpoint with phone number normalization to 254XXXXXXXXX format.",
+    "Deploy public HTTPS callback endpoint and verify connectivity using cloudflared tunnel or ngrok.",
+    "Implement database idempotency check to verify receipt uniqueness before fulfilling customer orders.",
+    "Configure PayHero Kenya channel credentials and test fallback payment routing."
+  ],
+  "viewsCount": 380,
+  "helpfulness": {
+    "yes": 97,
+    "no": 1
+  }
+},
+{
+  "id": "topic-web-frontend-api-engineering",
+  "title": "Modern Frontend & API Engineering: Next.js App Router, Tailwind CSS & REST Best Practices",
+  "slug": "modern-frontend-api-engineering-nextjs-tailwind-rest-apis",
+  "category": "Web Development",
+  "categorySlug": "web-development",
+  "categoryIcon": "Code2",
+  "difficulty": "INTERMEDIATE",
+  "estimatedRead": 15,
+  "summary": "Best practices for structuring modern, high-performance full-stack web applications using Next.js App Router (React Server Components, Suspense streaming), Tailwind CSS design tokens, robust API route handlers with Zod validation, and Core Web Vitals optimization.",
+  "solutions": [
+    "Architect component boundaries distinguishing React Server Components from interactive Client Components.",
+    "Implement granular data fetching and caching with ISR (revalidate) and on-demand cache tag revalidation.",
+    "Build type-safe REST API route handlers with Zod schema validation and standardized JSON error responses.",
+    "Configure Tailwind CSS design token architecture with CSS variables and responsive container primitives.",
+    "Generate dynamic OpenGraph metadata, canonical tags, and structured JSON-LD schema for search engines.",
+    "Optimize Core Web Vitals (LCP, CLS, INP) using next/font and responsive Next.js Image components."
+  ],
+  "details": "<h2 class=\"text-xl font-bold mb-2\">Modern Full-Stack Engineering: App Router, Styling Architecture & REST Endpoints</h2>\n<p>\nBuilding production-grade web applications requires a clear division between server-rendered data fetching and client-side user interactivity. This guide details best practices for Next.js App Router, Tailwind CSS design token architecture, request validation, and Core Web Vitals optimization.\n</p>\n\n<h3 class=\"font-semibold mt-6 mb-2\">1. Component Architecture: Server Components vs Client Components</h3>\n<p>\nNext.js App Router defaults all components to <strong>React Server Components (RSC)</strong>:\n</p>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Server Components:</strong> Render exclusively on the server and transmit zero JavaScript bytes to the browser. Ideal for fetching database records, reading file systems, and parsing heavy markdown. Keep secrets and API keys safely inside Server Components.</li>\n  <li><strong>Client Components (<code>'use client'</code>):</strong> Render on the client and enable React state (<code>useState</code>), side effects (<code>useEffect</code>), event listeners (<code>onClick</code>, <code>onChange</code>), and browser APIs (<code>window</code>, <code>localStorage</code>).\n    <ul class=\"list-circle pl-6 mt-1 space-y-1\">\n      <li>Push the <code>'use client'</code> boundary down the component tree to leaves (e.g., wrap a search input or a like button in a client component, while keeping the parent layout and article body as server components).</li>\n    </ul>\n  </li>\n</ul>\n\n<h3 class=\"font-semibold mt-6 mb-2\">2. Robust REST API Route Handlers with Zod Validation</h3>\n<p>\nNever process unvalidated user input in API route handlers. Use Zod schemas to guarantee type safety and reject malformed payloads before database operations:\n</p>\n<pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>// app/api/v1/tickets/route.ts\nimport { NextRequest, NextResponse } from 'next/server';\nimport { z } from 'zod';\nimport { db } from '@/lib/db';\n\nconst CreateTicketSchema = z.object({\n  title: z.string().min(5, \"Title must be at least 5 characters\").max(100),\n  description: z.string().min(20, \"Description must be detailed\"),\n  category: z.enum([\"hardware\", \"software\", \"networking\", \"security\"]),\n  priority: z.enum([\"LOW\", \"MEDIUM\", \"HIGH\", \"CRITICAL\"]).default(\"MEDIUM\"),\n  contactEmail: z.string().email(\"Invalid email address\")\n});\n\nexport async function POST(req: NextRequest) {\n  try {\n    const rawBody = await req.json();\n    const result = CreateTicketSchema.safeParse(rawBody);\n\n    if (!result.success) {\n      return NextResponse.json(\n        { error: \"Validation failed\", issues: result.error.format() },\n        { status: 422 }\n      );\n    }\n\n    const ticket = await db.ticket.create({\n      data: result.data\n    });\n\n    return NextResponse.json({ success: true, ticket }, { status: 201 });\n  } catch (error) {\n    return NextResponse.json(\n      { error: \"Internal server error occurred while creating ticket\" },\n      { status: 500 }\n    );\n  }\n}</code></pre>\n\n<h3 class=\"font-semibold mt-6 mb-2\">3. Tailwind CSS Design Token Architecture</h3>\n<p>\nMaintain visual consistency by tying Tailwind utility classes to global CSS custom properties rather than hardcoding arbitrary hex codes across components:\n</p>\n<pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>/* globals.css */\n:root {\n  --primary: #4a90e2;\n  --primary-hover: #357abd;\n  --surface-card: #ffffff;\n  --border-hairline: #e2e8f0;\n  --radius-card: 10px;\n}\n\n.portal-btn {\n  background-color: var(--primary);\n  border-radius: var(--radius-card);\n  transition: background-color 150ms ease-in-out;\n}\n.portal-btn:hover {\n  background-color: var(--primary-hover);\n}</code></pre>\n\n<h3 class=\"font-semibold mt-6 mb-2\">4. Core Web Vitals & Production SEO</h3>\n<ul class=\"list-disc pl-6 mb-4 space-y-1\">\n  <li><strong>Largest Contentful Paint (LCP):</strong> Preload hero imagery and critical fonts using <code>next/font/google</code> or system font stacks to ensure layout renders in under 1.2 seconds.</li>\n  <li><strong>Cumulative Layout Shift (CLS):</strong> Specify explicit <code>width</code> and <code>height</code> or aspect ratio wrappers on all images and embeds to prevent content jumps.</li>\n  <li><strong>Interaction to Next Paint (INP):</strong> Debounce search inputs and costly filtering operations to prevent long-running tasks from freezing the main JavaScript thread.</li>\n  <li><strong>Dynamic Metadata & Schema:</strong> Use Next.js <code>generateMetadata</code> to produce dynamic OpenGraph and Twitter card tags:\n    <pre class=\"bg-[#1e1e2e] text-[#f8f8f2] p-3 rounded-[6px] text-xs font-mono overflow-x-auto my-2\"><code>export async function generateMetadata({ params }): Promise<Metadata> {\n  const guide = await getGuide(params.slug);\n  return {\n    title: `${guide.title} | CyberTech IT Knowledge Base`,\n    description: guide.summary,\n    alternates: { canonical: `https://fixit.cybertechcomps.com/docs/${guide.categorySlug}/${guide.slug}/` },\n    openGraph: {\n      title: guide.title,\n      description: guide.summary,\n      url: `https://fixit.cybertechcomps.com/docs/${guide.categorySlug}/${guide.slug}/`,\n      siteName: \"CyberTech FixIT\",\n      type: \"article\"\n    }\n  };\n}</code></pre>\n  </li>\n</ul>",
+  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "audioUrl": "/audio/tech-trouble-solved.mp3",
+  "tags": [
+    "Next.js",
+    "React",
+    "App Router",
+    "Tailwind CSS",
+    "REST API",
+    "Zod",
+    "Validation",
+    "SEO",
+    "Core Web Vitals"
+  ],
+  "commands": {
+    "powershell": "npm run build; npx lighthouse-ci collect",
+    "cmd": "curl -I -X POST https://fixit.cybertechcomps.com/api/v1/tickets -H \"Content-Type: application/json\" -d \"{}\"",
+    "bash": "npx next lint && npm audit"
+  },
+  "checklists": [
+    "Separate React Server Components (data fetching) from Client Components (interactivity).",
+    "Enforce push-down pattern for 'use client' directives to minimize JavaScript bundle size.",
+    "Implement Zod schema validation on all incoming REST API Route Handler payloads.",
+    "Tie color schemes and borders to global CSS tokens and structured border-radius values.",
+    "Configure Next.js generateMetadata with dynamic OpenGraph, Twitter, and canonical URLs.",
+    "Add explicit width/height properties to all media elements to eliminate Cumulative Layout Shift.",
+    "Audit Lighthouse Core Web Vitals score targeting 95+ performance, accessibility, and SEO.",
+    "Verify production static export generates valid clean HTML routes."
+  ],
+  "viewsCount": 260,
+  "helpfulness": {
+    "yes": 83,
+    "no": 1
   }
 }
 ];
