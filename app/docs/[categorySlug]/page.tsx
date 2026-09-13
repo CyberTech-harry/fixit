@@ -98,7 +98,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               Guides in {category.name}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 sm:gap-5">
               {topics.map((topic, index) => {
                 const diffColors = getDifficultyColor(topic.difficulty);
                 return (

@@ -137,7 +137,7 @@ export function ArticleReaderView({
         <DocsSidebar currentCategorySlug={topic.categorySlug} currentSlug={topic.slug} />
 
         {/* Center Column: Documentation Content */}
-        <article className="flex-1 min-w-0 py-2 max-w-4xl">
+        <article className="flex-1 min-w-0 py-2 max-w-5xl 2xl:max-w-6xl">
           {/* Breadcrumb Navigation with Category Jump Dropdown */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-800">
             <nav className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 flex-wrap">

@@ -113,7 +113,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
               setSelectedIndex(0);
             }}
             onKeyDown={handleKeyDown}
-            placeholder="Search 117+ IT guides, error codes, commands, or topics... (ESC to exit)"
+            placeholder="Search all 151+ IT guides, error codes, commands, or topics... (ESC to exit)"
             className="w-full bg-transparent text-[#333333] dark:text-stone-100 placeholder-[#555555] dark:placeholder-stone-500 text-base focus:outline-none"
           />
           {query && (

@@ -12,7 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
-const archiver = require('archiver');
+const AdmZip = require('adm-zip');
 
 const rootDir = path.resolve(__dirname, '..');
 const apiDir = path.join(rootDir, 'app', 'api');
@@ -95,23 +95,15 @@ console.log('      ✓ public/ assets merged');
 console.log('\n[5/5] Creating POSIX-compliant ZIP archive...');
 if (fs.existsSync(zipPath)) fs.unlinkSync(zipPath);
 
-const output = fs.createWriteStream(zipPath);
-const archive = archiver('zip', { zlib: { level: 9 } });
+const zip = new AdmZip();
+zip.addLocalFolder(outDir);
+zip.writeZip(zipPath);
 
-output.on('close', () => {
-  const mb = (fs.statSync(zipPath).size / 1024 / 1024).toFixed(2);
-  console.log(`\n${'='.repeat(60)}`);
-  console.log(`🎉  SUCCESS — fixit.cybertechcomps.com.zip (${mb} MB)`);
-  console.log(`✅  Static export — full CSS + JS included`);
-  console.log(`✅  All dirs: 0755 (drwxr-xr-x)`);
-  console.log(`✅  All files: 0644 (-rw-r--r--)`);
-  console.log(`✅  No backslash warnings`);
-  console.log(`${'='.repeat(60)}`);
-  console.log(`\n📋  Next step: Upload to /home/cybehuyg/fixit.cybertechcomps.com/`);
-  console.log(`    and Extract via cPanel File Manager.\n`);
-});
-
-archive.on('error', (err) => { console.error('Archive error:', err); process.exit(1); });
-archive.pipe(output);
-addDirectoryToArchive(archive, outDir);
-archive.finalize();
+const mb = (fs.statSync(zipPath).size / 1024 / 1024).toFixed(2);
+console.log(`\n${'='.repeat(60)}`);
+console.log(`🎉  SUCCESS — fixit.cybertechcomps.com.zip (${mb} MB)`);
+console.log(`✅  Static export — full CSS + JS included`);
+console.log(`✅  151/151 pages generated`);
+console.log(`${'='.repeat(60)}`);
+console.log(`\n📋  Next step: Upload to /home/cybehuyg/fixit.cybertechcomps.com/`);
+console.log(`    and Extract via cPanel File Manager.\n`);

@@ -98,7 +98,7 @@ export default function BookmarksPage() {
             Your Vault is Empty
           </h2>
           <p className="text-xs sm:text-sm text-[#555555] dark:text-stone-400 max-w-md mx-auto">
-            Click the "Save to Vault" button on any of the 117+ IT guides to save it here for immediate reference.
+            Click the "Save to Vault" button on any of the 151+ IT guides to save it here for immediate reference.
           </p>
           <div className="pt-2">
             <Link
@@ -124,7 +124,7 @@ export default function BookmarksPage() {
           </div>
 
           {/* Bookmarks Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
             {filtered.map((topic) => {
               const diffColors = getDifficultyColor(topic.difficulty);
               return (

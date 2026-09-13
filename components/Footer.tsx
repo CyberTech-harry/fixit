@@ -8,20 +8,20 @@ export function Footer() {
 
   return (
     <footer className="w-full bg-slate-900 text-slate-400 border-t border-slate-800 mt-auto transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+      <div className="portal-container py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-10">
           {/* Brand Column */}
-          <div className="space-y-3">
+          <div className="space-y-3 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-[8px] bg-[#4a90e2] flex items-center justify-center text-white shadow-xs">
                 <Terminal className="w-4 h-4" />
               </div>
               <span className="font-bold text-base text-white tracking-tight">
-                CyberTech Portal
+                CyberTech FixIT
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Diagnostic procedures, multi-OS terminal commands, and infrastructure remediation workflows across {CATEGORIES.length} technical domains.
+              Verified diagnostic playbooks, multi-OS terminal commands, and infrastructure remediation workflows across {CATEGORIES.length} technical disciplines.
             </p>
             <div className="pt-1 flex items-center gap-2 text-[11px] text-slate-400 font-mono">
               <Globe className="w-3.5 h-3.5 text-[#4a90e2]" />
@@ -47,7 +47,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/docs/mobile" className="hover:text-white hover:underline transition-colors">
-                  Mobile (iOS &amp; Android, 15 Guides)
+                  Mobile (iOS &amp; Android)
                 </Link>
               </li>
               <li>
@@ -58,25 +58,15 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Infrastructure & Tech */}
+          {/* Web & Cloud Engineering */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
-              Infrastructure &amp; Systems
+              Web &amp; Cloud Engineering
             </h4>
             <ul className="space-y-2 text-xs text-slate-400">
               <li>
-                <Link href="/docs/networking" className="hover:text-white hover:underline transition-colors">
-                  Networking &amp; Internet (15 Guides)
-                </Link>
-              </li>
-              <li>
-                <Link href="/docs/security" className="hover:text-white hover:underline transition-colors">
-                  Security &amp; Privacy (10 Guides)
-                </Link>
-              </li>
-              <li>
-                <Link href="/docs/hardware" className="hover:text-white hover:underline transition-colors">
-                  Hardware Diagnostics (10 Guides)
+                <Link href="/docs/web-development" className="hover:text-white hover:underline transition-colors">
+                  Web Development (7 Guides)
                 </Link>
               </li>
               <li>
@@ -84,10 +74,49 @@ export function Footer() {
                   Emerging Tech &amp; Cloud (8 Guides)
                 </Link>
               </li>
+              <li>
+                <Link href="/docs/networking" className="hover:text-white hover:underline transition-colors">
+                  Networking &amp; DNS (15 Guides)
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/security" className="hover:text-white hover:underline transition-colors">
+                  Security &amp; Privacy (10 Guides)
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Portal Links */}
+          {/* SEO & Digital Growth */}
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
+              SEO &amp; Digital Growth
+            </h4>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <Link href="/docs/seo-growth" className="hover:text-white hover:underline transition-colors">
+                  Technical SEO (7 Guides)
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/seo-growth/core-web-vitals-optimization-search-rankings-lcp-cls-inp" className="hover:text-white hover:underline transition-colors">
+                  Core Web Vitals (LCP/CLS)
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/seo-growth/schema-org-structured-data-rich-snippets-json-ld" className="hover:text-white hover:underline transition-colors">
+                  Schema JSON-LD Snippets
+                </Link>
+              </li>
+              <li>
+                <Link href="/docs/seo-growth/google-search-console-bing-webmaster-indexing-mastery" className="hover:text-white hover:underline transition-colors">
+                  Search Console Indexing
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources & Legal */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-3">
               Resources &amp; Legal
@@ -100,7 +129,17 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/bookmarks" className="hover:text-white hover:underline transition-colors">
-                  Saved Solutions
+                  Saved Vault
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-white hover:underline transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-white hover:underline transition-colors">
+                  Terms of Service
                 </Link>
               </li>
               <li>
@@ -112,16 +151,6 @@ export function Footer() {
                 >
                   Video Walkthroughs <ExternalLink className="w-3 h-3" />
                 </a>
-              </li>
-              <li>
-                <Link href="/privacy" className="hover:text-white hover:underline transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-white hover:underline transition-colors">
-                  Terms of Use
-                </Link>
               </li>
             </ul>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import {
   Search,
@@ -17,6 +17,9 @@ import {
   CreditCard,
   Database,
   Cloud,
+  Laptop,
+  Globe,
+  TrendingUp,
 } from "lucide-react";
 import { CATEGORIES, TOPICS_DATA } from "@/lib/topics-data";
 import { CategoryIcon } from "@/components/CategoryIcon";
@@ -35,17 +38,17 @@ export default function HomePage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Get the newly published production guide
-  const newPublishingTopic = React.useMemo(() => {
+  const newPublishingTopic = useMemo(() => {
     return TOPICS_DATA.find((t) => t.id === "topic-web-publishing-fullstack") || TOPICS_DATA[TOPICS_DATA.length - 1];
   }, []);
 
   // Featured topics: place the newest guide at the top of the list for visibility
-  const featuredTopics = React.useMemo(() => {
+  const featuredTopics = useMemo(() => {
     if (selectedTab === "all") {
-      const others = TOPICS_DATA.filter((t) => t.id !== "topic-web-publishing-fullstack").slice(0, 5);
+      const others = TOPICS_DATA.filter((t) => t.id !== "topic-web-publishing-fullstack").slice(0, 7);
       return [newPublishingTopic, ...others];
     }
-    return TOPICS_DATA.filter((t) => t.categorySlug === selectedTab).slice(0, 6);
+    return TOPICS_DATA.filter((t) => t.categorySlug === selectedTab).slice(0, 8);
   }, [selectedTab, newPublishingTopic]);
 
   const shellSnippets = {
@@ -71,58 +74,61 @@ export default function HomePage() {
       {/* Global Search Command Palette */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
-      {/* Hero Section: Clean, Crisp, Minimal */}
-      <section className="pt-12 sm:pt-16 pb-10 border-b border-slate-200/80 dark:border-slate-800">
-        <div className="portal-container text-center max-w-3xl mx-auto space-y-6">
-          <Link
-            href={`/docs/${newPublishingTopic.categorySlug}/${newPublishingTopic.slug}`}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-[8px] bg-blue-50 dark:bg-blue-950/50 border border-blue-200/60 dark:border-blue-900/50 text-[#357abd] dark:text-blue-300 text-xs font-semibold hover:border-[#4a90e2] transition-colors"
-          >
-            <span className="w-2 h-2 rounded-[2px] bg-[#4a90e2] inline-block" />
-            <span className="font-bold">New:</span>
-            <span>Full-Stack Web Publishing, Databases &amp; M-Pesa Payments Guide</span>
-            <ArrowRight className="w-3 h-3 text-[#4a90e2]" />
-          </Link>
+      {/* Hero Section: Edge-to-Edge Full-Bleed with Subtle Micro-Grid */}
+      <section className="relative w-full border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 portal-grid-pattern pt-12 sm:pt-16 pb-14 sm:pb-20">
+        <div className="portal-container text-center space-y-6">
+          {/* Release Callout */}
+          <div className="inline-flex items-center gap-2">
+            <Link
+              href={`/docs/${newPublishingTopic.categorySlug}/${newPublishingTopic.slug}`}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[8px] bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-900 text-[#357abd] dark:text-blue-300 text-xs font-semibold hover:border-[#4a90e2] transition-colors"
+            >
+              <span className="w-2 h-2 rounded-[2px] bg-[#4a90e2] inline-block" />
+              <span className="font-bold">Latest Release:</span>
+              <span>Full-Stack Web Publishing, Databases &amp; M-Pesa API Architecture</span>
+              <ArrowRight className="w-3 h-3 text-[#4a90e2]" />
+            </Link>
+          </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-            Verified Step-by-Step IT Fixes
-          </h1>
+          {/* Punchy, Non-Wordy Headline */}
+          <div className="space-y-3 max-w-4xl mx-auto">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+              Clear, Actionable IT Fixes &amp; Web Engineering
+            </h1>
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+              Step-by-step diagnostic workflows for everyday computer issues, alongside complete production playbooks for cloud hosting, databases, and SEO.
+            </p>
+          </div>
 
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
-            Diagnostic workflows, copy-ready terminal commands, and solutions for operating systems, networking, databases, and infrastructure.
-          </p>
-
-          {/* Instant Search Bar Trigger */}
-          <div className="pt-2 max-w-xl mx-auto">
+          {/* Instant Search Bar Trigger: Wide & High-Contrast */}
+          <div className="pt-2 max-w-2xl mx-auto">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="w-full flex items-center justify-between p-3.5 sm:p-4 bg-white dark:bg-slate-800 hover:border-[#4a90e2] dark:hover:border-[#4a90e2] border border-slate-200 dark:border-slate-700 rounded-[10px] text-slate-500 dark:text-slate-400 text-xs sm:text-sm shadow-xs transition-all group cursor-pointer"
+              className="w-full flex items-center justify-between p-3.5 sm:p-4 bg-white dark:bg-slate-800/90 hover:border-[#4a90e2] dark:hover:border-[#4a90e2] border border-slate-200 dark:border-slate-700 rounded-[10px] text-slate-500 dark:text-slate-400 text-xs sm:text-sm shadow-xs transition-all group cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <Search className="w-4 h-4 text-[#4a90e2] group-hover:scale-110 transition-transform" />
+                <Search className="w-4.5 h-4.5 text-[#4a90e2] group-hover:scale-110 transition-transform" />
                 <span className="text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200">
-                  Search error codes, commands, symptoms (e.g. BSOD, DNS, STK Push)...
+                  Search error codes, symptoms, or commands (e.g. BSOD, DNS Flush, STK Push)...
                 </span>
               </div>
-              <kbd className="hidden sm:inline-block px-2.5 py-1 font-mono text-[11px] bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-[6px] text-slate-500 dark:text-slate-400">
+              <kbd className="hidden sm:inline-block px-2.5 py-1 font-mono text-[11px] bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-[6px] text-slate-500 dark:text-slate-400 shadow-2xs">
                 Ctrl + K
               </kbd>
             </button>
 
             {/* Quick Search Chips */}
-            <div className="mt-3 flex items-center justify-center gap-1.5 flex-wrap text-xs">
-              <span className="text-slate-400 dark:text-slate-500 text-[11px] font-medium mr-1">Popular:</span>
+            <div className="mt-3.5 flex items-center justify-center gap-1.5 flex-wrap text-xs">
+              <span className="text-slate-400 dark:text-slate-500 text-[11px] font-medium mr-1">Frequent Searches:</span>
               {[
                 "Web Publishing",
-                "SEO Audits",
-                "Core Web Vitals",
-                "Schema JSON-LD",
-                "Google Search Console",
                 "M-Pesa STK Push",
                 "DNS Flush",
+                "Core Web Vitals",
+                "Schema JSON-LD",
                 "BSOD 0x0000001E",
                 "Cloudflare SSL",
-                "Disk Cleanup",
+                "Slow PC Fix",
               ].map((query) => (
                 <button
                   key={query}
@@ -135,24 +141,73 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Minimal 4-Metric Strip */}
-          <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
-            <div className="portal-card p-3 text-center">
-              <span className="text-xl font-bold text-[#4a90e2] block font-mono">{TOPICS_DATA.length}</span>
-              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Guides</span>
-            </div>
-            <div className="portal-card p-3 text-center">
-              <span className="text-xl font-bold text-[#4a90e2] block font-mono">{CATEGORIES.length}</span>
-              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Domains</span>
-            </div>
-            <div className="portal-card p-3 text-center">
-              <span className="text-xl font-bold text-[#4a90e2] block font-mono">5</span>
-              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">OS Platforms</span>
-            </div>
-            <div className="portal-card p-3 text-center">
-              <span className="text-xl font-bold text-[#4a90e2] block font-mono">100%</span>
-              <span className="text-[11px] text-slate-500 dark:text-slate-400 font-medium">Verified Fixes</span>
-            </div>
+          {/* 3 Client Fast-Track Journey Cards */}
+          <div className="pt-6 grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 text-left max-w-5xl mx-auto">
+            {/* Pathway 1: Everyday Client Issues */}
+            <Link
+              href="/docs/windows-os"
+              className="portal-card group p-5 bg-white dark:bg-slate-900 hover:border-[#4a90e2] transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-[8px] bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 text-[#4a90e2] flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                  <Laptop className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white group-hover:text-[#4a90e2] transition-colors">
+                  Everyday Computer &amp; Device Fixes
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                  Plain-English 3-step solutions for Windows BSOD, macOS freezes, Wi-Fi drops, sound issues, and slow boot times.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center text-xs font-semibold text-[#4a90e2]">
+                <span>Browse Client Playbooks</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* Pathway 2: Web & Cloud Architecture */}
+            <Link
+              href="/docs/web-development"
+              className="portal-card group p-5 bg-white dark:bg-slate-900 hover:border-[#4a90e2] transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-[8px] bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 text-[#4a90e2] flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                  <Globe className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white group-hover:text-[#4a90e2] transition-colors">
+                  Web Hosting, Databases &amp; Payments
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                  Production architecture for GitHub CI/CD, .com/.co.ke domains, Cloudflare SSL, Supabase, and Daraja 3.0 M-Pesa.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center text-xs font-semibold text-[#4a90e2]">
+                <span>Explore Web Engineering</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
+
+            {/* Pathway 3: Technical SEO & Search Visibility */}
+            <Link
+              href="/docs/seo-growth"
+              className="portal-card group p-5 bg-white dark:bg-slate-900 hover:border-[#4a90e2] transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-10 h-10 rounded-[8px] bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 text-[#4a90e2] flex items-center justify-center mb-3.5 group-hover:scale-105 transition-transform">
+                  <TrendingUp className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white group-hover:text-[#4a90e2] transition-colors">
+                  Technical SEO &amp; Search Visibility
+                </h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                  Core Web Vitals (LCP, CLS, INP), Schema JSON-LD structured data, XML sitemaps, and Search Console verification.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center text-xs font-semibold text-[#4a90e2]">
+                <span>Inspect SEO Blueprints</span>
+                <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -293,8 +348,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* 6 Clean Guide Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Clean Guide Cards Across 3 to 4 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 sm:gap-6">
           {featuredTopics.map((topic) => {
             const diffColors = getDifficultyColor(topic.difficulty);
             return (
