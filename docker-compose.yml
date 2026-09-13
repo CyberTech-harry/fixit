@@ -1,0 +1,126 @@
+services:
+  # API Gateway
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: cybertech-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - frontend-net
+      - backend-net
+    depends_on:
+      web-portal:
+        condition: service_healthy
+      payment-service:
+        condition: service_healthy
+      auth-service:
+        condition: service_healthy
+      feedback-service:
+        condition: service_healthy
+      analytics-service:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Web Documentation Portal
+  web-portal:
+    build:
+      context: .
+      dockerfile: Dockerfile.portal
+    container_name: cybertech-web-portal
+    ports:
+      - "3050:3050"
+    environment:
+      - NODE_ENV=production
+      - PORT=3050
+    networks:
+      - frontend-net
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3050/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  # Payment & M-Pesa Microservice
+  payment-service:
+    build:
+      context: ./services/payment-service
+      dockerfile: Dockerfile
+    container_name: cybertech-payment-service
+    ports:
+      - "4001:4001"
+    env_file:
+      - ./services/payment-service/.env.example
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4001/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  # Auth & Identity Microservice
+  auth-service:
+    build:
+      context: ./services/auth-service
+      dockerfile: Dockerfile
+    container_name: cybertech-auth-service
+    ports:
+      - "4002:4002"
+    env_file:
+      - ./services/auth-service/.env.example
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4002/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  # Feedback & Community Microservice
+  feedback-service:
+    build:
+      context: ./services/feedback-service
+      dockerfile: Dockerfile
+    container_name: cybertech-feedback-service
+    ports:
+      - "4003:4003"
+    env_file:
+      - ./services/feedback-service/.env.example
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4003/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  # Telemetry & Analytics Microservice
+  analytics-service:
+    build:
+      context: ./services/analytics-service
+      dockerfile: Dockerfile
+    container_name: cybertech-analytics-service
+    ports:
+      - "4004:4004"
+    env_file:
+      - ./services/analytics-service/.env.example
+    networks:
+      - backend-net
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4004/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+networks:
+  frontend-net:
+    driver: bridge
+  backend-net:
+    driver: bridge

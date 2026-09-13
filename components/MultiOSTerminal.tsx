@@ -32,53 +32,53 @@ export function MultiOSTerminal({ commands }: MultiOSTerminalProps) {
   };
 
   return (
-    <div className="my-6 rounded-2xl overflow-hidden border border-stone-800 bg-stone-950 text-stone-100 shadow-xl">
+    <div className="my-6 rounded-[10px] overflow-hidden border border-slate-800 bg-slate-950 text-slate-100 shadow-sm">
       {/* Terminal Top Bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-stone-900/90 border-b border-stone-800 flex-wrap gap-2">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex-wrap gap-2">
         <div className="flex items-center gap-2">
-          {/* Traffic light dots */}
+          {/* Status dots */}
           <div className="flex items-center gap-1.5 mr-2">
-            <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-            <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-            <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+            <div className="w-2.5 h-2.5 rounded-[2px] bg-red-500/80" />
+            <div className="w-2.5 h-2.5 rounded-[2px] bg-amber-500/80" />
+            <div className="w-2.5 h-2.5 rounded-[2px] bg-emerald-500/80" />
           </div>
 
           {/* OS Selector Tabs */}
-          <div className="flex items-center bg-stone-950/80 rounded-lg p-0.5 border border-stone-800 text-xs">
+          <div className="flex items-center bg-slate-950 rounded-[6px] p-0.5 border border-slate-800 text-xs">
             {commands.powershell && (
               <button
                 onClick={() => setActiveTab("powershell")}
-                className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 font-mono ${
+                className={`px-2.5 py-1 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-[11px] cursor-pointer ${
                   activeTab === "powershell"
-                    ? "bg-teal-700/80 text-white font-semibold shadow-sm"
-                    : "text-stone-400 hover:text-stone-200"
+                    ? "bg-[#4a90e2] text-white font-semibold shadow-xs"
+                    : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                <Laptop className="w-3 h-3 text-teal-400" /> PowerShell
+                <Laptop className="w-3 h-3 text-white" /> PowerShell
               </button>
             )}
             {commands.cmd && (
               <button
                 onClick={() => setActiveTab("cmd")}
-                className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 font-mono ${
+                className={`px-2.5 py-1 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-[11px] cursor-pointer ${
                   activeTab === "cmd"
-                    ? "bg-teal-700/80 text-white font-semibold shadow-sm"
-                    : "text-stone-400 hover:text-stone-200"
+                    ? "bg-[#4a90e2] text-white font-semibold shadow-xs"
+                    : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                <TerminalSquare className="w-3 h-3 text-amber-400" /> CMD
+                <TerminalSquare className="w-3 h-3 text-white" /> CMD
               </button>
             )}
             {commands.bash && (
               <button
                 onClick={() => setActiveTab("bash")}
-                className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 font-mono ${
+                className={`px-2.5 py-1 rounded-[4px] transition-colors flex items-center gap-1.5 font-mono text-[11px] cursor-pointer ${
                   activeTab === "bash"
-                    ? "bg-teal-700/80 text-white font-semibold shadow-sm"
-                    : "text-stone-400 hover:text-stone-200"
+                    ? "bg-[#4a90e2] text-white font-semibold shadow-xs"
+                    : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                <Apple className="w-3 h-3 text-stone-300" /> Bash / Zsh
+                <Apple className="w-3 h-3 text-white" /> Bash / Zsh
               </button>
             )}
           </div>
@@ -87,26 +87,26 @@ export function MultiOSTerminal({ commands }: MultiOSTerminalProps) {
         {/* Copy Button */}
         <button
           onClick={handleCopy}
-          className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-mono transition-colors border border-stone-700/60"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded-[6px] bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono transition-colors border border-slate-700 cursor-pointer"
           title="Copy command to clipboard"
         >
           {copied ? (
             <>
               <Check className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="text-emerald-400">Copied!</span>
+              <span className="text-emerald-400 font-medium">Copied</span>
             </>
           ) : (
             <>
-              <Copy className="w-3.5 h-3.5 text-stone-400" />
-              <span>Copy Command</span>
+              <Copy className="w-3.5 h-3.5 text-slate-400" />
+              <span>Copy</span>
             </>
           )}
         </button>
       </div>
 
       {/* Terminal Code Body */}
-      <div className="p-4 sm:p-5 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed bg-gradient-to-b from-stone-950 to-stone-900/90">
-        <pre className="text-teal-300 whitespace-pre-wrap select-all">
+      <div className="p-4 sm:p-5 font-mono text-xs sm:text-sm overflow-x-auto leading-relaxed bg-slate-950">
+        <pre className="text-[#6ba3f5] whitespace-pre-wrap select-all font-mono">
           <code>
             {currentCommand || "# No command defined for this shell"}
           </code>

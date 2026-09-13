@@ -53,8 +53,8 @@ export function TableOfContents() {
 
   return (
     <div className="space-y-3 sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
-      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-900 dark:text-stone-100">
-        <List className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+        <List className="w-3.5 h-3.5 text-[#4a90e2]" />
         <span>On This Page</span>
       </div>
 
@@ -74,8 +74,8 @@ export function TableOfContents() {
                 item.level === 3 ? "pl-4" : "pl-1 font-medium"
               } ${
                 isActive
-                  ? "text-teal-600 dark:text-teal-400 font-semibold border-l-2 border-teal-600 dark:border-teal-400 pl-2"
-                  : "text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200"
+                  ? "text-[#4a90e2] font-semibold border-l-2 border-[#4a90e2] pl-2"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
               }`}
             >
               {item.text}

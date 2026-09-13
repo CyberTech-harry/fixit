@@ -1,0 +1,27 @@
+{
+  "name": "payment-service",
+  "version": "1.0.0",
+  "description": "CyberTech Payment Microservice: Safaricom Daraja 3.0 M-Pesa & PayHero Gateway",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts",
+    "test": "node --test"
+  },
+  "keywords": ["mpesa", "daraja", "payhero", "payments", "microservice"],
+  "author": "CyberTech Engineering",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "@fastify/cors": "^8.5.0",
+    "@fastify/helmet": "^11.1.1",
+    "dotenv": "^16.4.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  }
+}

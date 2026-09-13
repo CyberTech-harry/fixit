@@ -13,6 +13,7 @@ import {
   Terminal,
   Folder,
   Code2,
+  TrendingUp,
 } from "lucide-react";
 
 interface CategoryIconProps {
@@ -66,6 +67,11 @@ export function CategoryIcon({ name, className = "w-5 h-5" }: CategoryIconProps)
     case "web development":
     case "web-development":
       return <Code2 className={className} />;
+    case "trendingup":
+    case "seo":
+    case "seo-growth":
+    case "seo & digital growth":
+      return <TrendingUp className={className} />;
     default:
       return <Terminal className={className} />;
   }

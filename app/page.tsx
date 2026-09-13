@@ -114,6 +114,10 @@ export default function HomePage() {
               <span className="text-slate-400 dark:text-slate-500 text-[11px] font-medium mr-1">Popular:</span>
               {[
                 "Web Publishing",
+                "SEO Audits",
+                "Core Web Vitals",
+                "Schema JSON-LD",
+                "Google Search Console",
                 "M-Pesa STK Push",
                 "DNS Flush",
                 "BSOD 0x0000001E",
@@ -207,7 +211,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 11 Technical Domains Directory: Scannable & Clean */}
+      {/* 12 Technical Domains Directory: Scannable & Clean */}
       <section className="portal-container">
         <div className="flex items-center justify-between mb-5 pb-3 border-b border-slate-200 dark:border-slate-800">
           <div>
@@ -263,11 +267,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Category Filter Tabs including Web Development */}
+          {/* Category Filter Tabs including Web Development and SEO & Growth */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
             {[
               { label: "All", slug: "all" },
               { label: "Web Development", slug: "web-development" },
+              { label: "SEO & Growth", slug: "seo-growth" },
               { label: "Windows OS", slug: "windows-os" },
               { label: "Networking", slug: "networking" },
               { label: "Security", slug: "security" },

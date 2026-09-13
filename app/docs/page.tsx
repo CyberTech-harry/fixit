@@ -48,7 +48,7 @@ export default function DocsIndexPage() {
           All IT Troubleshooting Guides &amp; Solutions
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
-          Access {TOPICS_DATA.length} operational technical guides across 10 categories. Filter by domain, difficulty rating, or search for exact keywords and error codes.
+          Access {TOPICS_DATA.length} operational technical guides across {CATEGORIES.length} technical domains. Filter by domain, difficulty rating, or search for exact keywords and error codes.
         </p>
       </div>
 

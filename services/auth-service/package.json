@@ -1,0 +1,30 @@
+{
+  "name": "auth-service",
+  "version": "1.0.0",
+  "description": "CyberTech Auth & Identity Microservice: JWT, RBAC & Credentials",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts",
+    "test": "node --test"
+  },
+  "keywords": ["auth", "jwt", "rbac", "identity", "microservice"],
+  "author": "CyberTech Engineering",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "@fastify/cors": "^8.5.0",
+    "@fastify/helmet": "^11.1.1",
+    "@fastify/jwt": "^8.0.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.11.24",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  }
+}

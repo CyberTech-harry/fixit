@@ -6,6 +6,7 @@ import {
   Clock,
   ChevronRight,
 } from "lucide-react";
+import { Metadata } from "next";
 import { getCategoryBySlug, getTopicsByCategory, CATEGORIES } from "@/lib/topics-data";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import { DocsSidebar } from "@/components/DocsSidebar";
@@ -21,6 +22,17 @@ export function generateStaticParams() {
   return CATEGORIES.map((cat) => ({
     categorySlug: cat.slug,
   }));
+}
+
+export function generateMetadata({ params }: CategoryPageProps): Metadata {
+  const category = getCategoryBySlug(params.categorySlug);
+  if (!category) {
+    return { title: "Domain Not Found | CyberTech FixIT" };
+  }
+  return {
+    title: `${category.name} IT Guides & Diagnostic Playbooks | CyberTech FixIT`,
+    description: category.description,
+  };
 }
 
 export default function CategoryPage({ params }: CategoryPageProps) {
