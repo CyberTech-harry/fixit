@@ -85,6 +85,7 @@ export function Navbar() {
             <nav className="hidden md:flex items-center gap-1.5 text-sm font-semibold">
               <Link
                 href="/docs"
+                prefetch={true}
                 className={`px-3.5 py-2 rounded-[8px] transition-colors ${
                   pathname.startsWith("/docs")
                     ? "bg-blue-50 dark:bg-blue-950/60 text-[#4a90e2] dark:text-blue-400 font-bold"
@@ -96,6 +97,7 @@ export function Navbar() {
 
               <Link
                 href="/bookmarks"
+                prefetch={true}
                 className={`px-3.5 py-2 rounded-[8px] transition-colors flex items-center gap-2 cursor-pointer ${
                   pathname === "/bookmarks"
                     ? "bg-blue-50 dark:bg-blue-950/60 text-[#4a90e2] dark:text-blue-400 font-bold"
@@ -150,43 +152,52 @@ export function Navbar() {
               {resolvedTheme === "dark" ? (
                 <Sun className="w-4 h-4 text-amber-400" />
               ) : (
-                <Moon className="w-4 h-4 text-slate-600" />
+                <Moon className="w-4 h-4 text-slate-700" />
               )}
             </button>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Hamburger Menu Toggle */}
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-[8px] transition-colors border border-slate-200 dark:border-slate-700"
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              className="md:hidden p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-[8px] transition-colors"
               title="Toggle Menu"
             >
-              {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 space-y-4">
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <Link
-                href="/docs"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-2.5 rounded-[8px] bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold"
-              >
-                <BookOpen className="w-3.5 h-3.5 text-[#4a90e2]" />
-                All Guides ({CATEGORIES.reduce((acc, c) => acc + (c.topicCount || 0), 0)})
-              </Link>
-              <Link
-                href="/bookmarks"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-2.5 rounded-[8px] bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold"
-              >
-                <Bookmark className="w-3.5 h-3.5 text-[#4a90e2]" />
-                Saved ({bookmarkCount})
-              </Link>
-            </div>
+          <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-4 space-y-3 shadow-lg">
+            <Link
+              href="/docs"
+              prefetch={true}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-2.5 p-2.5 rounded-[8px] text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            >
+              <BookOpen className="w-4 h-4 text-[#4a90e2]" />
+              <span>Knowledge Base</span>
+            </Link>
 
+            <Link
+              href="/bookmarks"
+              prefetch={true}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center justify-between p-2.5 rounded-[8px] text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            >
+              <div className="flex items-center gap-2.5">
+                <Bookmark className="w-4 h-4 text-[#4a90e2]" />
+                <span>Saved Guides</span>
+              </div>
+              {bookmarkCount > 0 && (
+                <span className="px-2 py-0.5 bg-[#4a90e2] text-white rounded-[6px] text-xs font-bold font-mono">
+                  {bookmarkCount}
+                </span>
+              )}
+            </Link>
+
+            {/* Categories in Mobile View */}
             <div className="pt-3 border-t border-slate-100 dark:border-slate-800">
               <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider block mb-2">
                 Technical Domains
@@ -196,6 +207,7 @@ export function Navbar() {
                   <Link
                     key={cat.slug}
                     href={`/docs/${cat.slug}`}
+                    prefetch={true}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="flex items-center justify-between p-2.5 rounded-[6px] text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                   >
@@ -214,8 +226,10 @@ export function Navbar() {
         )}
       </header>
 
-      {/* Global Search Command Palette */}
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      {/* Global Search Command Palette (Only mounted when opened for zero main-thread overhead) */}
+      {isSearchOpen && (
+        <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      )}
     </>
   );
 }

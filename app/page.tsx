@@ -24,11 +24,9 @@ import {
 } from "lucide-react";
 import { CATEGORIES, TOPICS_DATA } from "@/lib/topics-data";
 import { CategoryIcon } from "@/components/CategoryIcon";
-import { SearchModal } from "@/components/SearchModal";
 import { getDifficultyColor } from "@/lib/utils";
 
 export default function HomePage() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeShell, setActiveShell] = useState<"powershell" | "cmd" | "bash">("powershell");
   const [copiedSnippet, setCopiedSnippet] = useState(false);
 
@@ -62,9 +60,6 @@ export default function HomePage() {
 
   return (
     <div className="space-y-14 pb-20">
-      {/* Global Search Command Palette */}
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
-
       {/* Hero Section: Edge-to-Edge Full-Bleed with Vivid Datacenter Background */}
       <section className="relative w-full border-b border-slate-800 bg-slate-950 overflow-hidden pt-16 sm:pt-24 pb-16 sm:pb-24">
         {/* Background Image Layer with rich visibility */}

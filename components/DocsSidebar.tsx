@@ -1,16 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   ChevronDown,
   ChevronRight,
-  BookOpen,
-  CheckCircle,
   Search,
-  Tag,
-  Laptop,
 } from "lucide-react";
 import { CATEGORIES, TOPICS_DATA } from "@/lib/topics-data";
 import { CategoryIcon } from "./CategoryIcon";
@@ -22,15 +17,30 @@ interface DocsSidebarProps {
 }
 
 export function DocsSidebar({ currentSlug, currentCategorySlug }: DocsSidebarProps) {
-  const pathname = usePathname();
+  // Pre-group topics by category once to avoid array filters on every render
+  const topicsByCategory = useMemo(() => {
+    const map: Record<string, typeof TOPICS_DATA> = {};
+    for (const cat of CATEGORIES) {
+      map[cat.slug] = [];
+    }
+    for (const topic of TOPICS_DATA) {
+      if (map[topic.categorySlug]) {
+        map[topic.categorySlug].push(topic);
+      }
+    }
+    return map;
+  }, []);
+
+  // Default to only expanding the currently active category (or first category if none)
   const [openCategories, setOpenCategories] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
+    const activeSlug = currentCategorySlug || (CATEGORIES[0]?.slug);
     CATEGORIES.forEach((cat) => {
-      // Default open the active category or all
-      initial[cat.slug] = currentCategorySlug ? cat.slug === currentCategorySlug : true;
+      initial[cat.slug] = cat.slug === activeSlug;
     });
     return initial;
   });
+
   const [filterQuery, setFilterQuery] = useState("");
 
   const toggleCategory = (slug: string) => {
@@ -53,9 +63,9 @@ export function DocsSidebar({ currentSlug, currentCategorySlug }: DocsSidebarPro
         </div>
       </div>
 
-      <div className="space-y-3.5 pr-2">
+      <div className="space-y-2 pr-2">
         {CATEGORIES.map((category) => {
-          const topics = TOPICS_DATA.filter((t) => t.categorySlug === category.slug);
+          const topics = topicsByCategory[category.slug] || [];
           const filteredTopics = filterQuery
             ? topics.filter((t) => t.title.toLowerCase().includes(filterQuery.toLowerCase()))
             : topics;
@@ -68,8 +78,9 @@ export function DocsSidebar({ currentSlug, currentCategorySlug }: DocsSidebarPro
             <div key={category.slug} className="space-y-1">
               {/* Category Header */}
               <button
+                type="button"
                 onClick={() => toggleCategory(category.slug)}
-                className="w-full flex items-center justify-between p-2.5 rounded-[8px] text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors group"
+                className="w-full flex items-center justify-between p-2.5 rounded-[8px] text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors group cursor-pointer"
               >
                 <div className="flex items-center gap-2.5">
                   <CategoryIcon name={category.icon} className="w-4 h-4 text-[#4a90e2] dark:text-blue-400" />
@@ -99,6 +110,7 @@ export function DocsSidebar({ currentSlug, currentCategorySlug }: DocsSidebarPro
                       <Link
                         key={topic.id}
                         href={`/docs/${topic.categorySlug}/${topic.slug}`}
+                        prefetch={true}
                         className={`group block py-2 px-2.5 rounded-[6px] text-sm transition-all ${
                           isActive
                             ? "bg-blue-50 dark:bg-blue-950/60 text-[#4a90e2] dark:text-blue-300 font-semibold border-l-2 border-[#4a90e2] -ml-[1px]"

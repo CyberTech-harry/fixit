@@ -120,6 +120,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
                       <Link
                         href={`/docs/${topic.categorySlug}/${topic.slug}`}
+                        prefetch={true}
                         className="block group"
                       >
                         <h3 className="font-bold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-[#4a90e2] transition-colors line-clamp-2">
@@ -138,6 +139,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                       </span>
                       <Link
                         href={`/docs/${topic.categorySlug}/${topic.slug}`}
+                        prefetch={true}
                         className="font-semibold text-[#4a90e2] hover:text-[#357abd] hover:underline flex items-center gap-1 text-sm"
                       >
                         Open Guide <ArrowRight className="w-4 h-4" />
