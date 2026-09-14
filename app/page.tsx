@@ -65,25 +65,23 @@ export default function HomePage() {
       {/* Global Search Command Palette */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
-      {/* Hero Section: Edge-to-Edge Full-Bleed with Atmospheric Image & Subtle Micro-Grid */}
-      <section className="relative w-full border-b border-slate-200 dark:border-slate-800 overflow-hidden pt-14 sm:pt-20 pb-16 sm:pb-24">
-        {/* Background Image Layer with atmospheric high-tech overlay */}
+      {/* Hero Section: Edge-to-Edge Full-Bleed with Vivid Datacenter Background */}
+      <section className="relative w-full border-b border-slate-800 bg-slate-950 overflow-hidden pt-16 sm:pt-24 pb-16 sm:pb-24">
+        {/* Background Image Layer with rich visibility */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
           <Image
             src="/images/hero-bg.jpg"
             alt="Data Center & Cloud Infrastructure"
             fill
             priority
-            quality={90}
-            className="object-cover object-center opacity-60 dark:opacity-40"
+            quality={95}
+            className="object-cover object-center opacity-85 dark:opacity-75"
             sizes="100vw"
           />
-          {/* Elegant High-Contrast Overlay for Crisp Text Protection */}
-          <div className="absolute inset-0 bg-white/90 dark:bg-slate-950/85 backdrop-blur-[1px]" />
+          {/* Deep Midnight Vignette Overlay for Crisp White Text Legibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950/95" />
           {/* Subtle Hairline Micro-Grid */}
-          <div className="absolute inset-0 portal-grid-pattern opacity-60 dark:opacity-40" />
-          {/* Edge-to-Edge Bottom Gradient Fade */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/70 dark:to-slate-950/80" />
+          <div className="absolute inset-0 portal-grid-pattern opacity-25" />
         </div>
 
         <div className="portal-container text-center space-y-7 relative z-10">
@@ -91,46 +89,30 @@ export default function HomePage() {
           <div className="inline-flex items-center gap-2">
             <Link
               href={`/docs/${newPublishingTopic.categorySlug}/${newPublishingTopic.slug}`}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-[8px] bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-900 text-[#357abd] dark:text-blue-300 text-sm font-semibold hover:border-[#4a90e2] transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-[8px] bg-blue-500/15 border border-blue-400/30 text-blue-200 text-sm font-semibold hover:bg-blue-500/25 hover:border-blue-400/50 transition-all backdrop-blur-xs"
             >
-              <span className="w-2.5 h-2.5 rounded-[2px] bg-[#4a90e2] inline-block" />
-              <span className="font-bold">Latest Blueprint:</span>
+              <span className="w-2.5 h-2.5 rounded-[2px] bg-[#4a90e2] inline-block shadow-[0_0_8px_#4a90e2]" />
+              <span className="font-bold text-white">Latest Blueprint:</span>
               <span>Full-Stack Web Publishing, Databases &amp; M-Pesa Architecture</span>
               <ArrowRight className="w-4 h-4 text-[#4a90e2]" />
             </Link>
           </div>
 
-          {/* Punchy, Non-Wordy Headline with Larger Typography */}
+          {/* Punchy, Non-Wordy Headline with Crisp Bright White Typography */}
           <div className="space-y-4 max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.12]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12] drop-shadow-sm">
               Clear, Actionable IT Fixes &amp; Web Engineering
             </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg lg:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
               Step-by-step diagnostic workflows for everyday computer issues, alongside complete production playbooks for cloud hosting, databases, and SEO.
             </p>
           </div>
 
-          {/* Instant Search Bar Trigger: Wide & High-Contrast with Larger Text */}
-          <div className="pt-2 max-w-2xl mx-auto">
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="w-full flex items-center justify-between p-4 sm:p-5 bg-white dark:bg-slate-800/90 hover:border-[#4a90e2] dark:hover:border-[#4a90e2] border border-slate-200 dark:border-slate-700 rounded-[10px] text-slate-500 dark:text-slate-400 text-sm sm:text-base shadow-xs transition-all group cursor-pointer"
-            >
-              <div className="flex items-center gap-3.5">
-                <Search className="w-5 h-5 text-[#4a90e2] group-hover:scale-110 transition-transform shrink-0" />
-                <span className="text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 text-left">
-                  Search error codes, symptoms, or commands (e.g. BSOD, DNS Flush, STK Push)...
-                </span>
-              </div>
-              <kbd className="hidden sm:inline-block px-3 py-1 font-mono text-xs bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-[6px] text-slate-500 dark:text-slate-400 shadow-2xs shrink-0">
-                Ctrl + K
-              </kbd>
-            </button>
-
-            {/* Quick Search Chips with Larger Typography */}
-            <div className="mt-4 flex items-center justify-center gap-2 flex-wrap text-sm">
-              <span className="text-slate-400 dark:text-slate-500 text-xs font-semibold mr-1 uppercase tracking-wider">
-                Frequent:
+          {/* Quick Frequent Topic Shortcuts (Search bar removed in favor of header search) */}
+          <div className="pt-2 max-w-3xl mx-auto">
+            <div className="flex items-center justify-center gap-2 flex-wrap text-sm">
+              <span className="text-slate-400 text-xs font-semibold mr-1 uppercase tracking-wider">
+                Popular:
               </span>
               {[
                 "Web Publishing",
@@ -145,7 +127,7 @@ export default function HomePage() {
                 <button
                   key={query}
                   onClick={() => setIsSearchOpen(true)}
-                  className="px-3 py-1.5 rounded-[8px] bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-[#4a90e2] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm font-medium transition-colors cursor-pointer"
+                  className="px-3 py-1.5 rounded-[8px] bg-slate-900/80 hover:bg-slate-800 hover:text-[#4a90e2] text-slate-300 border border-slate-700/80 text-xs sm:text-sm font-medium transition-colors cursor-pointer backdrop-blur-xs"
                 >
                   {query}
                 </button>
@@ -154,24 +136,24 @@ export default function HomePage() {
           </div>
 
           {/* 3 Client Fast-Track Journey Cards */}
-          <div className="pt-8 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 text-left max-w-5xl mx-auto">
+          <div className="pt-6 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 text-left max-w-5xl mx-auto">
             {/* Pathway 1: Everyday Client Issues */}
             <Link
               href="/docs/windows-os"
-              className="portal-card group p-6 bg-white dark:bg-slate-900 hover:border-[#4a90e2] transition-all flex flex-col justify-between"
+              className="group p-6 bg-slate-900/80 hover:bg-slate-900/95 border border-slate-700/80 hover:border-[#4a90e2] rounded-[10px] transition-all flex flex-col justify-between backdrop-blur-md shadow-lg"
             >
               <div>
-                <div className="w-12 h-12 rounded-[10px] bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 text-[#4a90e2] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-[10px] bg-blue-500/15 border border-blue-400/30 text-[#4a90e2] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Laptop className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-[#4a90e2] transition-colors">
+                <h3 className="font-bold text-base sm:text-lg text-white group-hover:text-[#4a90e2] transition-colors">
                   Everyday Computer &amp; Device Fixes
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-300 mt-2 leading-relaxed">
                   Plain-English solutions for Windows BSOD, macOS freezes, Wi-Fi drops, sound issues, and slow boot times.
                 </p>
               </div>
-              <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center text-sm font-semibold text-[#4a90e2]">
+              <div className="mt-5 pt-3.5 border-t border-slate-800 flex items-center text-sm font-semibold text-[#4a90e2]">
                 <span>Browse Client Playbooks</span>
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -180,20 +162,20 @@ export default function HomePage() {
             {/* Pathway 2: Web & Cloud Architecture */}
             <Link
               href="/docs/web-development"
-              className="portal-card group p-6 bg-white dark:bg-slate-900 hover:border-[#4a90e2] transition-all flex flex-col justify-between"
+              className="group p-6 bg-slate-900/80 hover:bg-slate-900/95 border border-slate-700/80 hover:border-[#4a90e2] rounded-[10px] transition-all flex flex-col justify-between backdrop-blur-md shadow-lg"
             >
               <div>
-                <div className="w-12 h-12 rounded-[10px] bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 text-[#4a90e2] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-[10px] bg-blue-500/15 border border-blue-400/30 text-[#4a90e2] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Globe className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-[#4a90e2] transition-colors">
+                <h3 className="font-bold text-base sm:text-lg text-white group-hover:text-[#4a90e2] transition-colors">
                   Web Hosting, Databases &amp; Payments
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-300 mt-2 leading-relaxed">
                   Production architecture for GitHub CI/CD, .com/.co.ke domains, Cloudflare SSL, Supabase, and Daraja 3.0 M-Pesa.
                 </p>
               </div>
-              <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center text-sm font-semibold text-[#4a90e2]">
+              <div className="mt-5 pt-3.5 border-t border-slate-800 flex items-center text-sm font-semibold text-[#4a90e2]">
                 <span>Explore Web Engineering</span>
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </div>
@@ -202,20 +184,20 @@ export default function HomePage() {
             {/* Pathway 3: Technical SEO & Search Visibility */}
             <Link
               href="/docs/seo-growth"
-              className="portal-card group p-6 bg-white dark:bg-slate-900 hover:border-[#4a90e2] transition-all flex flex-col justify-between"
+              className="group p-6 bg-slate-900/80 hover:bg-slate-900/95 border border-slate-700/80 hover:border-[#4a90e2] rounded-[10px] transition-all flex flex-col justify-between backdrop-blur-md shadow-lg"
             >
               <div>
-                <div className="w-12 h-12 rounded-[10px] bg-blue-50 dark:bg-slate-800 border border-blue-100 dark:border-slate-700 text-[#4a90e2] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-12 h-12 rounded-[10px] bg-blue-500/15 border border-blue-400/30 text-[#4a90e2] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <TrendingUp className="w-6 h-6" />
                 </div>
-                <h3 className="font-bold text-base sm:text-lg text-slate-900 dark:text-white group-hover:text-[#4a90e2] transition-colors">
+                <h3 className="font-bold text-base sm:text-lg text-white group-hover:text-[#4a90e2] transition-colors">
                   Technical SEO &amp; Search Visibility
                 </h3>
-                <p className="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                <p className="text-sm text-slate-300 mt-2 leading-relaxed">
                   Core Web Vitals (LCP, CLS, INP), Schema JSON-LD structured data, XML sitemaps, and Search Console verification.
                 </p>
               </div>
-              <div className="mt-5 pt-3.5 border-t border-slate-100 dark:border-slate-800 flex items-center text-sm font-semibold text-[#4a90e2]">
+              <div className="mt-5 pt-3.5 border-t border-slate-800 flex items-center text-sm font-semibold text-[#4a90e2]">
                 <span>Inspect SEO Blueprints</span>
                 <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
               </div>
