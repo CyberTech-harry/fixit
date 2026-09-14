@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Search,
   BookOpen,
@@ -64,9 +65,28 @@ export default function HomePage() {
       {/* Global Search Command Palette */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
-      {/* Hero Section: Edge-to-Edge Full-Bleed with Subtle Micro-Grid */}
-      <section className="relative w-full border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 portal-grid-pattern pt-14 sm:pt-20 pb-16 sm:pb-24">
-        <div className="portal-container text-center space-y-7">
+      {/* Hero Section: Edge-to-Edge Full-Bleed with Atmospheric Image & Subtle Micro-Grid */}
+      <section className="relative w-full border-b border-slate-200 dark:border-slate-800 overflow-hidden pt-14 sm:pt-20 pb-16 sm:pb-24">
+        {/* Background Image Layer with atmospheric high-tech overlay */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Data Center & Cloud Infrastructure"
+            fill
+            priority
+            quality={90}
+            className="object-cover object-center opacity-60 dark:opacity-40"
+            sizes="100vw"
+          />
+          {/* Elegant High-Contrast Overlay for Crisp Text Protection */}
+          <div className="absolute inset-0 bg-white/90 dark:bg-slate-950/85 backdrop-blur-[1px]" />
+          {/* Subtle Hairline Micro-Grid */}
+          <div className="absolute inset-0 portal-grid-pattern opacity-60 dark:opacity-40" />
+          {/* Edge-to-Edge Bottom Gradient Fade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/70 dark:to-slate-950/80" />
+        </div>
+
+        <div className="portal-container text-center space-y-7 relative z-10">
           {/* Release Callout */}
           <div className="inline-flex items-center gap-2">
             <Link
