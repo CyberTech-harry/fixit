@@ -108,32 +108,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Quick Frequent Topic Shortcuts (Search bar removed in favor of header search) */}
-          <div className="pt-2 max-w-3xl mx-auto">
-            <div className="flex items-center justify-center gap-2 flex-wrap text-sm">
-              <span className="text-slate-400 text-xs font-semibold mr-1 uppercase tracking-wider">
-                Popular:
-              </span>
-              {[
-                "Web Publishing",
-                "M-Pesa STK Push",
-                "DNS Flush",
-                "Core Web Vitals",
-                "Schema JSON-LD",
-                "BSOD 0x0000001E",
-                "Cloudflare SSL",
-                "Slow PC Fix",
-              ].map((query) => (
-                <button
-                  key={query}
-                  onClick={() => setIsSearchOpen(true)}
-                  className="px-3 py-1.5 rounded-[8px] bg-slate-900/80 hover:bg-slate-800 hover:text-[#4a90e2] text-slate-300 border border-slate-700/80 text-xs sm:text-sm font-medium transition-colors cursor-pointer backdrop-blur-xs"
-                >
-                  {query}
-                </button>
-              ))}
-            </div>
-          </div>
 
           {/* 3 Client Fast-Track Journey Cards */}
           <div className="pt-6 grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 text-left max-w-5xl mx-auto">
